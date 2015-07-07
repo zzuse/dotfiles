@@ -1,0 +1,11 @@
+
+call plug#begin('~/.vim/bundle')
+
+" Define bundles via Github repos
+Plug 'scrooloose/syntastic'
+
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+endif
+
+call plug#end()

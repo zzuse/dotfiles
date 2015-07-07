@@ -1,0 +1,7 @@
+# Unix
+alias ll="ls -al"
+alias ln="ln -v"
+alias mkdir="mkdir -p"
+
+# Include custom aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local

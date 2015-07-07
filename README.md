@@ -16,12 +16,17 @@ Install rcm on Ubuntu:
     sudo apt-get update
     sudo apt-get install rcm
     
+Setting the RCRC environment variable tells rcup to use standard configuration options.
 
-Install the dotfiles:
+Install the dotfiles for zsh:
 
     env RCRC=$HOME/dotfiles/rcrc rcup
-    Setting the RCRC environment variable tells rcup to use standard configuration options.
+    
+Install the dotfiles for bash:
 
+    export RCRC="$HOME/dotfiles/rcrc"
+    rcup
+    
 You can safely run rcup multiple times to update:
 
     rcup

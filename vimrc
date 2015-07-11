@@ -27,11 +27,20 @@ set number               " numbers in side bar
 set relativenumber
 set ic                   " ignore case
 set cursorline           " set column or line color or "set cursorcolumn
+set path+=../include/
+
+if &diff
+"    echo "diff mode"
+else
+    set cursorline
+endif
 
 :nnoremap <Leader>c :set cursorline! <CR>
 :nnoremap <Leader>p :set paste! <CR>
 :nnoremap <Leader>n :set nu! <CR>
 :nnoremap <Leader>t :set expandtab! <CR>
+:nnoremap <Leader>ww :set diffopt+=iwhite <CR>
+:nnoremap <Leader>nw :set diffopt-=iwhite <CR>
 nmap <F5> :e ++enc=cp936<CR>  " for fileencoding is not utf8
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -95,6 +104,23 @@ endif " has("autocmd")
 colo molokai
 set background=dark
 set gfn=Consolas:h12:cANSI
+    function MaximizeVOC()
+        " put your actual values below
+        set lines=41
+        set columns=178
+    endfunction
+    function MaximizeMBP()
+        " put your actual values below
+        set lines=36
+        set columns=158
+    endfunction
+" simplify resizing splits
+:nnoremap <Leader>j <C-w>-
+:nnoremap <Leader>k <C-w>+
+:nnoremap <Leader>h <C-w><
+:nnoremap <Leader>l <C-w>>
+:nnoremap <F1>m :call MaximizeVOC() <CR>
+:nnoremap <F2>m :call MaximizeMBP() <CR>
 
 " only windows, not macvim, TODO
 if has ("gui_running")

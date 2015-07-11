@@ -47,7 +47,7 @@ ORPHAN 01;05;37;41  # orphaned syminks
 MISSING 01;05;37;41 # ... and the files they point to
 OTHER_WRITABLE 1;31;47
 # This is for files with execute permission:
-EXEC 30;42
+EXEC 00;33
 
 # List any file extensions like '.gz' or '.tar' that you would like ls
 # to colorize below. Put the extension, a space, and the color init string.
@@ -82,7 +82,7 @@ EXEC 30;42
 .tif 00;35
 .h   00;41
 .o   00;46
-.cpp 01;40
-.c   01;40
-.cc   01;40
+.cpp 01;42
+.c   01;42
+.cc   01;42
 .expr   01;42

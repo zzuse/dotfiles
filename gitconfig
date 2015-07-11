@@ -1,5 +1,8 @@
+[core]
+	excludesfile = ~/.gitignoreglobal
+	editor = vim
 [user]
 	email = zzuse@outlook.com
 	name = zzuse
-[core]
-	editor = vim
+[include]
+    path = ~/.gitconfig.local

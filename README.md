@@ -30,3 +30,20 @@ Install the dotfiles for bash:
 You can safely run rcup multiple times to update:
 
     rcup
+    
+Update dotfiles
+------------
+
+I can edit files in dotfiles directory, after that I just need to do:
+
+    git add XXX
+    git commit
+    git push origin master
+
+If I changed through web page, I will sync within terminal:
+
+    git pull
+
+
+
+

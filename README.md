@@ -16,6 +16,20 @@ Install rcm on Ubuntu:
     sudo apt-get update
     sudo apt-get install rcm
     
+Install to an old linux machine from source,my machine have many openssl problem, so:
+
+    wget http://curl.haxx.se/ca/cacert.pem
+    curl --cacert cacert.pem  -LO https://thoughtbot.github.io/rcm/dist/rcm-1.2.3.tar.gz
+    tar -xvf rcm-1.2.3.tar.gz && \
+    cd rcm-1.2.3 && \
+    ./configure && \
+    make && \
+    make install
+    
+For more about rcm install, plz consult https://github.com/thoughtbot/rcm
+    
+Setup
+------------
 Setting the RCRC environment variable tells rcup to use standard configuration options.
 
 Install the dotfiles for zsh:

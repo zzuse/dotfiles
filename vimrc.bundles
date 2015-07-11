@@ -3,18 +3,18 @@ call plug#begin('~/.vim/bundle')
 Plug 'zzuse/molokai'
 Plug 'zzuse/statusline.vim'
 Plug 'zzuse/cscope_maps.vim'
-" I can change to local search engine,will have my repository
+" google search engine
 Plug 'szw/vim-g'
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Still In Learning
+"" Still In Learning
 "Plug 'scrooloose/syntastic'
-" all lanugage support
+"" all lanugage support
 "Plug 'sheerun/vim-polyglot'
 "Plug 'tpope/vim-commentary'
-" it is not helpful for me
+"" it is not helpful for me
 "Plug 'Valloric/YouCompleteMe'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
@@ -22,3 +22,11 @@ if filereadable(expand("~/.vimrc.bundles.local"))
 endif
 
 call plug#end()
+"" for manual control
+" PlugInstall [name ...] [#threads]   Install plugins
+" PlugUpdate [name ...] [#threads]    Install or update plugins
+" PlugClean[!]      Remove unused directories (bang version will clean without prompt)
+" PlugUpgrade       Upgrade vim-plug itself
+" PlugStatus        Check the status of plugins
+" PlugDiff          See the updated changes from the previous PlugUpdate
+" PlugSnapshot

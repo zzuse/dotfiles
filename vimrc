@@ -15,23 +15,24 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=50           " keep 50 lines of command line history
+set ruler                " show the cursor position all the time
+set showcmd              " display incomplete commands
+set incsearch            " do incremental searching
+set mps+=<:>             " use % to match <>
 set tabstop=4
-set shiftwidth=4 "change the number of space characters inserted
-set expandtab "change tab to space
-set number
+set shiftwidth=4         " change the number of space characters inserted
+set expandtab            " change tab to space
+set number               " numbers in side bar
 set relativenumber
-set ic
-set cursorline
-"set cursorcolumn
-"set paste
+set ic                   " ignore case
+set cursorline           " set column or line color or "set cursorcolumn
+
 :nnoremap <Leader>c :set cursorline! <CR>
 :nnoremap <Leader>p :set paste! <CR>
 :nnoremap <Leader>n :set nu! <CR>
 :nnoremap <Leader>t :set expandtab! <CR>
+nmap <F5> :e ++enc=cp936<CR>  " for fileencoding is not utf8
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -95,7 +96,7 @@ colo molokai
 set background=dark
 set gfn=Consolas:h12:cANSI
 
-" I think this part only works with windows, not macvim
+" only windows, not macvim, TODO
 if has ("gui_running")
 	set background=light
 

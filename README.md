@@ -44,6 +44,14 @@ If I changed through web page, I will sync within terminal:
 
     git pull
 
+Add dotfiles
+------------
 
+I have no idea, why mkrc command will add dotfiles to dotfiles-local by default
+,so I run in ubuntu home dir like this:
+
+    mkrc -d dotfiles .XXX
+    
+then it will symlink the .XXX to dotfiles dir as dotfiles/XXX
 
 

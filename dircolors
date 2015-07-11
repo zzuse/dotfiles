@@ -45,7 +45,7 @@ BLK 40;32;00    # block device driver
 CHR 40;32;00    # character device driver
 ORPHAN 01;05;37;41  # orphaned syminks
 MISSING 01;05;37;41 # ... and the files they point to
-OTHER_WRITABLE 1;31;47 
+OTHER_WRITABLE 1;31;47
 # This is for files with execute permission:
 EXEC 30;42
 

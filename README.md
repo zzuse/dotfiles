@@ -1,5 +1,6 @@
 # dotfiles
 ===
+inspired by https://github.com/thoughtbot/dotfiles
 git clone https://github.com/zzuse/dotfiles.git
 
 Installation
@@ -67,5 +68,4 @@ I have no idea, why mkrc command will add dotfiles to dotfiles-local by default
     mkrc -d dotfiles .XXX
     
 then it will symlink the .XXX to dotfiles dir as dotfiles/XXX
-
 

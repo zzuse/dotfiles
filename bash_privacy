@@ -1,0 +1,47 @@
+#TODO
+#if [ -f ~/.bashrc ]; then
+#    . ~/.bashrc
+#fi
+
+#clear;
+#some logon info
+echo -e "\e[1m\e[32;40m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+printf "=     Logging in to ";printf %11.11s $(tty) ;echo -e "...                         -"
+echo "=     Welcome  <ZhangZhen>.                                -"
+echo "=     The time is $(date +%H:%M:%S), on $(date +%A), $(date +%d\ %B\,\ %G)      -"
+echo "=     Concentrate on the experiment!                       -"
+echo "=     Happy hacking in $(hostname).                           -"
+echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+
+#only for self usage def
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+export TERM=xterm
+export GREP_OPTIONS="--color=auto"
+export GREP_COLOR="30;45"
+export PATH=/home/zhangzhen/bin/bin:/home/zhangzhen/bin:$PATH
+export MANPATH=/home/zhangzhen/bin/share/man:$MANPATH
+unset LS_COLORS
+eval $(dircolors -b ~/.dircolors)
+# Only load Liquid Prompt in interactive shells, not from a script or from scp
+[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
+
+#some logout info
+trap $HOME/.logout 0
+#for iterm2
+#source /home/zhangzhen/bin/.iterm2_shell_integration.bash
+
+#aliases
+alias ll='ls -lrS'
+alias lll='ls -lrt'
+alias ls='ls -F --color'
+alias grep='grep -i --color=auto'
+alias egrep='egrep --color=auto'
+alias dus='du --max-depth=1 |sort -n'
+alias cp='cp'
+alias more='less'
+alias diff='diff -r'
+alias cdwork='cd /home/zhangzhen/work/format_db'
+alias meld='~/meld-1.0.0/meld'
+alias exp='export LD_PRELOAD=/home/zhangzhen/bin/lib/libssl.so:/home/zhangzhen/bin/lib/libcrypto.so;'
+

@@ -1,0 +1,5 @@
+*.[oa]
+CVS
+media_format
+*.so
+testsuite

@@ -93,40 +93,39 @@ endif " has("autocmd")
 
 " about colo and font
 colo molokai
-set background=dark
 set gfn=Consolas:h12:cANSI
 
 " only windows, not macvim, TODO
 if has ("gui_running")
-	set background=light
 
-	source $VIMRUNTIME/mswin.vim
-	behave mswin
-
-	set diffexpr=MyDiff()
-	function MyDiff()
-		let opt = '-a --binary '
-		if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-		if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-		let arg1 = v:fname_in
-		if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-		let arg2 = v:fname_new
-		if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-		let arg3 = v:fname_out
-		if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-		let eq = ''
-		if $VIMRUNTIME =~ ' '
-			if &sh =~ '\<cmd'
-				let cmd = '""' . $VIMRUNTIME . '\diff"'
-				let eq = '"'
-			else
-				let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-			endif
-		else
-			let cmd = $VIMRUNTIME . '\diff'
-		endif
-		silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-	endfunction
+    colo molokai
+"	source $VIMRUNTIME/mswin.vim
+"	behave mswin
+"
+"	set diffexpr=MyDiff()
+"	function MyDiff()
+"		let opt = '-a --binary '
+"		if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+"		if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+"		let arg1 = v:fname_in
+"		if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"		let arg2 = v:fname_new
+"		if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"		let arg3 = v:fname_out
+"		if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"		let eq = ''
+"		if $VIMRUNTIME =~ ' '
+"			if &sh =~ '\<cmd'
+"				let cmd = '""' . $VIMRUNTIME . '\diff"'
+"				let eq = '"'
+"			else
+"				let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+"			endif
+"		else
+"			let cmd = $VIMRUNTIME . '\diff'
+"		endif
+"		silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+"	endfunction
 
 else
 	if &term =~ "vt100"
@@ -161,11 +160,32 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+:nnoremap <Leader>u :UltiSnipsEdit <CR>
+:nnoremap <Leader>U :UltiSnipsEdit! <CR>
 
 " for NERDTree
 nnoremap <C-n>t :NERDTreeToggle<CR>
 " :p:h on a directory name results on the directory name itself
 nnoremap <C-n>p :NERDTree %:p:h<CR>
+
+" from Damian Conway
+    nnoremap <silent> n   n:call HLNext(0.4)<cr>
+    nnoremap <silent> N   N:call HLNext(0.4)<cr>
+    " OR ELSE just highlight the match in red...
+    function! HLNext (blinktime)
+        highlight RedOnRed ctermfg=red ctermbg=red
+        if has ("gui_running")
+            highlight RedOnRed guifg=#000000 guibg=#F92672
+        endif
+        let [bufnum, lnum, col, off] = getpos('.')
+        let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+        let target_pat = '\c\%#\%('.@/.'\)'
+        let ring = matchadd('RedOnRed', target_pat, 101)
+        redraw
+        exec 'sleep ' . float2nr(a:blinktime * 100) . 'm'
+        call matchdelete(ring)
+        redraw
+    endfunction
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

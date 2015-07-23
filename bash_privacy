@@ -32,9 +32,8 @@ trap $HOME/.logout 0
 #source /home/zhangzhen/bin/.iterm2_shell_integration.bash
 
 #aliases
-alias ll='ls -lrS'
-alias lll='ls -lrt'
-alias ls='ls -F --color'
+alias l='/home/zhangzhen/bin/bin/ls -F --color'
+alias ls='ls -F --color -lrt'
 alias grep='grep -i --color=auto'
 alias egrep='egrep --color=auto'
 alias dus='du --max-depth=1 |sort -n'

@@ -21,6 +21,7 @@ export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="30;45"
 export PATH=/home/zhangzhen/bin/bin:/home/zhangzhen/bin:$PATH
 export MANPATH=/home/zhangzhen/bin/share/man:$MANPATH
+export CVSEDITOR=vim
 unset LS_COLORS
 eval $(dircolors -b ~/.dircolors)
 # Only load Liquid Prompt in interactive shells, not from a script or from scp

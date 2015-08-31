@@ -12,7 +12,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "" Still In Learning
 "Plug 'scrooloose/syntastic'
 "" all lanugage support
-"Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 "Plug 'tpope/vim-commentary'
 "" it is not helpful for me
 "Plug 'Valloric/YouCompleteMe'

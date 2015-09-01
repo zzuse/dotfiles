@@ -1,4 +1,4 @@
-alias cdw='cd /home/zz/Work/bin'
+alias cdb='cd /home/zz/Work/bin'
 set -o vi
 function title {
     if [ -z $1 ];then
@@ -8,3 +8,6 @@ function title {
     fi
 }
 export PATH=/home/zz/Work/bin:$PATH
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
+

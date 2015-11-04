@@ -38,6 +38,7 @@ endif
 :nnoremap <Leader>c :set cursorline! <CR>
 :nnoremap <Leader>p :set paste! <CR>
 :nnoremap <Leader>n :set nu! <CR>
+:nnoremap <Leader>r :set relativenumber! <CR>
 :nnoremap <Leader>t :set expandtab! <CR>
 :nnoremap <Leader>ww :set diffopt+=iwhite <CR>
 :nnoremap <Leader>nw :set diffopt-=iwhite <CR>

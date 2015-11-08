@@ -18,6 +18,7 @@ export HISTSIZE=1000
 export HISTFILESIZE=2000
 export TERM=xterm
 export GREP_OPTIONS="--color=auto"
+export LS_OPTIONS="--color=auto"
 export GREP_COLOR="30;45"
 export PATH=/home/zhangzhen/bin/bin:/home/zhangzhen/bin:$PATH
 export MANPATH=/home/zhangzhen/bin/share/man:$MANPATH
@@ -35,15 +36,17 @@ trap $HOME/.logout 0
 #source /home/zhangzhen/bin/.iterm2_shell_integration.bash
 
 #aliases
-alias l='/home/zhangzhen/bin/bin/ls -F --color'
-alias ls='ls -F --color -lrt'
-alias grep='grep -i --color=auto'
-alias egrep='egrep --color=auto'
+alias l='/home/zhangzhen/bin/bin/ls -F $LS_OPTIONS'
+alias ls='ls -F $LS_OPTIONS'
+alias ll='ls -F $LS_OPTIONS -lrt'
+
+alias grep='grep -i $GREP_OPTIONS'
+alias egrep='egrep $GREP_OPTIONS'
 alias dus='du --max-depth=1 |sort -n'
 alias cp='cp'
-alias more='less'
-alias diff='diff -r'
-alias cdwork='cd /home/zhangzhen/work/format_db'
+alias m='less'
+alias d='diff -r'
+alias cdwork='cd /home/zhangzhen/work/'
 alias meld='~/meld-1.0.0/meld'
 alias expo='export LD_PRELOAD=/home/zhangzhen/bin/lib/libssl.so:/home/zhangzhen/bin/lib/libcrypto.so;'
 alias imp='export ORACLE_HOME=/home/oracle/app/product/11.2.0;/home/oracle/app/product/11.2.0/bin/imp'

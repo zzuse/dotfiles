@@ -69,3 +69,12 @@ I have no idea, why mkrc command will add dotfiles to dotfiles-local by default
     
 then it will symlink the .XXX to dotfiles dir as dotfiles/XXX
 
+Only for me
+------------
+
+this part include multi-platform configure:
+
+* bashrc and bash_aliases is for Ubuntu
+* bash_privacy is for REHL5
+* bash_profile is for Mac
+

@@ -25,6 +25,7 @@ export MANPATH=/home/zhangzhen/bin/share/man:$MANPATH
 export CVSEDITOR=vim
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
+export CVSROOT=:pserver:zhangzhen@10.1.248.67:2401/cvsroot/unibss
 unset LS_COLORS
 eval $(dircolors -b ~/.dircolors)
 # Only load Liquid Prompt in interactive shells, not from a script or from scp

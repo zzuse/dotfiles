@@ -43,7 +43,8 @@ endif
 :nnoremap <Leader>ww :set diffopt+=iwhite <CR>
 :nnoremap <Leader>nw :set diffopt-=iwhite <CR>
 nmap <F5> :e ++enc=cp936<CR>   " for fileencoding is not utf8
-nmap <F6> :set syntax=fasm<CR> " for reading asm code
+nmap <F6> :e ++enc=utf-8<CR>   " for fileencoding is utf8
+nmap <F7> :set syntax=fasm<CR> " for reading asm code
 " Don't use Ex mode, use Q for formatting
 map Q gq
 

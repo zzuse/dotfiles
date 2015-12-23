@@ -54,3 +54,11 @@ alias expo='export LD_PRELOAD=/home/zhangzhen/bin/lib/libssl.so:/home/zhangzhen/
 alias imp='export ORACLE_HOME=/home/oracle/app/product/11.2.0;/home/oracle/app/product/11.2.0/bin/imp'
 alias exp='export ORACLE_HOME=/home/oracle/app/product/11.2.0;/home/oracle/app/product/11.2.0/bin/exp'
 
+function title {
+    if [ -z $1 ];then
+        echo -en "\033]2;${PWD}\007"
+    else
+        echo -en "\033]2;$1\007"
+    fi
+}
+

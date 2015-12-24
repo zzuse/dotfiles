@@ -1,8 +1,10 @@
 .DS_Store
 *.[oa]
+r
 CVS
 media_format
 *.so
+*.log
 testsuite
 cscope*
 *.sw[nop]

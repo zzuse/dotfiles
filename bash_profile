@@ -27,7 +27,7 @@ alias md5sum='md5 -r'
 alias grep='grep -i $GREP_OPTIONS'
 alias egrep='egrep $GREP_OPTIONS'
 alias dus='du -d 2'
-alias vi='vim'
+alias vi='mvim'
 
 trap $HOME/.logout 0
 

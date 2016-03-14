@@ -9,6 +9,7 @@ function title {
 }
 export PATH=/home/zz/Work/bin:$PATH
 export GOROOT=$HOME/go
-export GOPATH=$HOME/go/3rd
+export GOPATH=$HOME/3rd
+export GOROOT_BOOTSTRAP=$HOME/go1.5
 export PATH=$PATH:$GOROOT/bin
 

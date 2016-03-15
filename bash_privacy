@@ -24,6 +24,8 @@ export PATH=/home/zhangzhen/bin/bin:/home/zhangzhen/bin:$PATH
 export MANPATH=/home/zhangzhen/bin/share/man:$MANPATH
 export CVSEDITOR=vim
 export GOROOT=$HOME/go
+export GOPATH=$HOME/gocode
+export GOROOT_BOOTSTRAP=$HOME/go1.4
 export PATH=$PATH:$GOROOT/bin
 export CVSROOT=:pserver:zhangzhen@10.1.248.67:2401/cvsroot/unibss
 unset LS_COLORS

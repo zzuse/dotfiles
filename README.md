@@ -1,6 +1,6 @@
 # dotfiles
 ===
-inspired by https://github.com/thoughtbot/dotfiles
+inspired by https://github.com/thoughtbot/dotfiles  
 git clone https://github.com/zzuse/dotfiles.git
 
 Installation

@@ -15,7 +15,8 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-set history=50           " keep 50 lines of command line history
+set history=100           " keep 100 lines of command line history
+set undolevels=100        " keep 100 lines of undolevels command line history
 set ruler                " show the cursor position all the time
 set showcmd              " display incomplete commands
 set incsearch            " do incremental searching
@@ -26,6 +27,7 @@ set expandtab            " change tab to space
 set number               " numbers in side bar
 set relativenumber
 set ic                   " ignore case
+set smartcase            " Case sensitive if we type an upper case
 set cursorline           " set column or line color or "set cursorcolumn
 set path+=../include/
 
@@ -181,16 +183,56 @@ else
 	endif
 endif
 
+" for neoComplete
+let g:neocomplete#enable_at_startup = 1
 " for UltiSnips
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-x>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsExpandTrigger="<c-x>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-:nnoremap <Leader>u :UltiSnipsEdit <CR>
-:nnoremap <Leader>U :UltiSnipsEdit! <CR>
+"let g:UltiSnipsEditSplit="vertical"
+":nnoremap <Leader>u :UltiSnipsEdit <CR>
+":nnoremap <Leader>U :UltiSnipsEdit! <CR>
+" for airline
+"  let g:airline_section_a       (mode, crypt, paste, spell, iminsert)
+"  let g:airline_section_b       (hunks, branch)
+"  let g:airline_section_c       (bufferline or filename)
+"  let g:airline_section_gutter  (readonly, csv)
+"  let g:airline_section_x       (tagbar, filetype, virtualenv)
+"  let g:airline_section_y       (fileencoding, fileformat)
+"  let g:airline_section_z       (percentage, line number, column number)
+"  let g:airline_section_error   (ycm_error_count, syntastic, eclim)
+"  let g:airline_section_warning (ycm_warning_count, whitespace)
+  function! AirlineInit()
+    let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+    let g:airline_section_b = airline#section#create_left(['hunks','file','%Y'])
+    let g:airline_section_c = airline#section#create(['%F',' ','',' ','%B'])
+    let g:airline_section_x = airline#section#create(['%{strftime("%c")}'])
+  endfunction
+  autocmd User AirlineAfterInit call AirlineInit()
+
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = '∄'
+  let g:airline_symbols.whitespace = 'Ξ'
 
 " for NERDTree
 nnoremap <C-n>t :NERDTreeToggle<CR>

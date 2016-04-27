@@ -17,6 +17,8 @@ export GREP_COLOR="30;45"
 export GOPATH=$HOME/Script/go
 export GOROOT=/usr/local/go
 
+export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+
 set -o vi
 PS1='\[\e[1m\]\[\e[36;41m\]\u@\[\e[34;43m\]Work!\[\e[32;40m\]${PWD}>\[\e[0m\]'
 

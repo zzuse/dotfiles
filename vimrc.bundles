@@ -2,7 +2,7 @@
 call plug#begin('~/.vim/bundle')
 Plug 'zzuse/molokai'
 Plug 'vim-airline/vim-airline'
-"Plug 'zzuse/statusline.vim'
+Plug 'zzuse/statusline'
 Plug 'zzuse/cscope_maps.vim'
 " google search engine
 Plug 'szw/vim-g'

@@ -1,26 +1,24 @@
 
 call plug#begin('~/.vim/bundle')
+" beautify
 Plug 'zzuse/molokai'
 Plug 'vim-airline/vim-airline'
 Plug 'zzuse/statusline.vim'
 Plug 'zzuse/cscope_maps.vim'
 " google search engine
 Plug 'szw/vim-g'
-" Group dependencies, vim-snippets depends on ultisnips
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" On-demand loading
+" dash search
+Plug 'rizzatti/dash.vim'
+" nerdtree On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"" Still In Learning
 "" all lanugage support
 "Plug 'scrooloose/syntastic'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'fatih/vim-go'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/neocomplete'
-"Plug 'tpope/vim-commentary'
-"" it is not helpful for me
-"Plug 'Valloric/YouCompleteMe'
-Plug 'rizzatti/dash.vim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 "for git branch
 Plug 'tpope/vim-fugitive'
 

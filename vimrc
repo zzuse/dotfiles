@@ -185,16 +185,26 @@ endif
 
 " for neoComplete
 let g:neocomplete#enable_at_startup = 1
-" for UltiSnips
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<c-x>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-":nnoremap <Leader>u :UltiSnipsEdit <CR>
-":nnoremap <Leader>U :UltiSnipsEdit! <CR>
+" and enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+" Tell Neosnippet about self snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+" for neosnippet Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 " for airline
 "  let g:airline_section_a       (mode, crypt, paste, spell, iminsert)
 "  let g:airline_section_b       (hunks, branch)

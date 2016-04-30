@@ -28,6 +28,8 @@ export GOPATH=$HOME/gocode
 export GOROOT_BOOTSTRAP=$HOME/go1.4
 export PATH=$PATH:$GOROOT/bin
 export CVSROOT=:pserver:zhangzhen@10.1.248.67:2401/cvsroot/unibss
+export TIMEOUT=0
+export TMOUT=0
 unset LS_COLORS
 eval $(dircolors -b ~/.dircolors)
 # Only load Liquid Prompt in interactive shells, not from a script or from scp
@@ -55,6 +57,7 @@ alias meld='~/meld-1.0.0/meld'
 alias expo='export LD_PRELOAD=/home/zhangzhen/bin/lib/libssl.so:/home/zhangzhen/bin/lib/libcrypto.so;'
 alias imp='export ORACLE_HOME=/home/oracle/app/product/11.2.0;/home/oracle/app/product/11.2.0/bin/imp'
 alias exp='export ORACLE_HOME=/home/oracle/app/product/11.2.0;/home/oracle/app/product/11.2.0/bin/exp'
+alias z='zsh'
 
 function title {
     if [ -z $1 ];then

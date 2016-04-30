@@ -19,7 +19,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/neocomplete'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-"for git branch
+" git branch
 Plug 'tpope/vim-fugitive'
 
 if filereadable(expand("~/.vimrc.bundles.local"))

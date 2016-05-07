@@ -28,7 +28,7 @@ set number               " numbers in side bar
 set relativenumber
 set ic                   " ignore case
 set smartcase            " Case sensitive if we type an upper case
-set cursorline           " set column or line color or "set cursorcolumn
+"set cursorline           " set column or line color or "set cursorcolumn
 set path+=../include/
 
 if &diff

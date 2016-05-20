@@ -15,12 +15,15 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'scrooloose/syntastic'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'fatih/vim-go'
+" multi language syntax compile support
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/neocomplete'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 " git branch
 Plug 'tpope/vim-fugitive'
+" json sort 
+Plug 'axiaoxin/vim-json-line-format'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

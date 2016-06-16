@@ -242,6 +242,10 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
+let g:airline#extensions#default#layout = [
+      \ [ 'error', 'warning', 'x', 'y', 'z' ],
+      \ [ 'a', 'b', 'c' ]
+      \ ]
 
 " for NERDTree
 nnoremap <C-n>t :NERDTreeToggle<CR>

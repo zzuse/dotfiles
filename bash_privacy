@@ -59,6 +59,16 @@ alias imp='export ORACLE_HOME=/home/oracle/app/product/11.2.0;/home/oracle/app/p
 alias exp='export ORACLE_HOME=/home/oracle/app/product/11.2.0;/home/oracle/app/product/11.2.0/bin/exp'
 alias z='zsh'
 
+# redis
+#export REDIS_HOME=/home/liugang5/public/redis
+#export PATH=$REDIS_HOME/bin:$PATH
+#export LD_LIBRARY_PATH=$REDIS_HOME/lib:$LD_LIBRARY_PATH
+
+#libcurl
+#export CURL_HOME=/home/zhangzhen/work/curl-7.48.0
+#export PATH=$CURL_HOME/bin:$PATH
+#export LD_LIBRARY_PATH=$CURL_HOME/lib:$LD_LIBRARY_PATH
+
 function title {
     if [ -z $1 ];then
         echo -en "\033]2;${PWD}\007"
@@ -66,4 +76,3 @@ function title {
         echo -en "\033]2;$1\007"
     fi
 }
-z

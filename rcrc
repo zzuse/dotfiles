@@ -1,2 +1,4 @@
-EXCLUDES="README.md LICENSE"
+#env RCRC=$HOME/dotfiles/rcrc rcup
+#export RCRC="$HOME/dotfiles/rcrc";rcup
+EXCLUDES="README.md LICENSE rcrc"
 DOTFILES_DIRS="$HOME/dotfiles-local $HOME/dotfiles"

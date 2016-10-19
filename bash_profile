@@ -1,27 +1,39 @@
+#FOR echo
+echo "   ________________ __ __   ______  ____  "
+echo "   \___   /\___   /|  |  \ /  ___/_/ __ \ "
+echo "    /    /  /    / |  |  / \___ \ \  ___/ "
+echo "   /_____ \/_____ \|____/ /____  > \___  >"
+echo "         \/      \/            \/      \/ "
+echo "*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*"
+echo "ctrl+\` open terminal"
+echo "ctrl+1 send exit"
+echo "ctrl+2 swap option cmd"
+echo "ctrl+5 QuitQQ"
+echo "ctrl+6 RunQQ"
+echo "ctrl+0 RunQQMusic"
 
-##
-# Your previous /Users/zz/.bash_profile file was backed up as /Users/zz/.bash_profile.macports-saved_2015-03-20_at_14:52:05
-##
-
-# MacPorts Installer addition on 2015-03-20_at_14:52:05: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:/Users/zz/Documents/self/bin/:/Users/zz/Documents/work/bin/:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
-export DYLD_LIBRARY_PATH="/Users/zz/Downloads/instantclient_11_2;/usr/local/"
+#FOR expect
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+#FOR instantclient_11_2
+export DYLD_LIBRARY_PATH="/Users/zz/Documents/Software/instantclient_11_2;/usr/local/lib"
 export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"
-export ORACLE_HOME="/Users/zz/Downloads/instantclient_11_2"
+export ORACLE_HOME="/Users/zz/Documents/Software/instantclient_11_2"
+#FOR dummy cscope
 export CSCOPE_DB='/local/zhangzhen/cscope/$CSVIEW/cscope.out'
+#FOR terminal
 export CLICOLOR=1
 export LSCOLORS='gxfxcxdxbxegedabagacad'
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="30;45" 
-export GOPATH=$HOME/Script/go
+#FOR Golang
+export GOPATH=$HOME/Lang/go
 export GOROOT=/usr/local/go
-
 export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
-
+#FOR mvim
 set -o vi
-PS1='\[\e[1m\]\[\e[36;41m\]\u@\[\e[34;43m\]Work!\[\e[32;40m\]${PWD}>\[\e[0m\]'
-
+#FOR PS1
+PS1='\[\e[1m\]\[\e[36;41m\]\u@\[\e[34;43m\]Working Smart!\[\e[32;40m\]${PWD}>\[\e[0m\]'
+#FOR alias
 alias cdw='cd /Users/zz/Documents/work'
 alias cds='cd /Users/zz/Documents/self'
 alias cdb='cd /Users/zz/Documents/work/bin'
@@ -34,4 +46,3 @@ alias vi='mvim'
 
 trap $HOME/.logout 0
 
-#source /Users/zz/.iterm2_shell_integration.bash

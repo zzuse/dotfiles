@@ -1,7 +1,7 @@
 # dotfiles
 ===
 inspired by https://github.com/thoughtbot/dotfiles  
-git clone https://github.com/zzuse/dotfiles.git
+git clone https://github.com/zzuse/dotfiles.git  
 brew install mackup https://github.com/lra/mackup
 
 Installation
@@ -71,10 +71,10 @@ in my configuration, mkrc command will add dotfiles to dotfiles-local by default
     
 then it will symlink the .XXX to dotfiles dir as dotfiles/XXX
 
-Back up OSX APP plist files to iCloud 
+Back up OSX APP plist or other files to iCloud 
 ------------
 
-some none dotfiles will use mackup to backup
+some none dotfiles will use mackup to backup  
 after install mackup then to add mackup supported apps:
 
     vi ~/.mackup.cfg

@@ -43,6 +43,7 @@ alias grep='grep -i $GREP_OPTIONS'
 alias egrep='egrep $GREP_OPTIONS'
 alias dus='du -d 2'
 alias vi='mvim'
+alias vim='mvim'
 
 trap $HOME/.logout 0
 

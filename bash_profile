@@ -13,7 +13,7 @@ echo "ctrl+6 RunQQ"
 echo "ctrl+0 RunQQMusic"
 
 #FOR expect
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:/Users/zz/.do:$PATH"
 #FOR instantclient_11_2
 export DYLD_LIBRARY_PATH="/Users/zz/Documents/Software/instantclient_11_2;/usr/local/lib"
 export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"

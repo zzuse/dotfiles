@@ -26,7 +26,7 @@ export LSCOLORS='gxfxcxdxbxegedabagacad'
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="30;45" 
 #FOR Golang
-export GOPATH=$HOME/Lang/go
+export GOPATH=$HOME/Documents/Work/Self/Lang/GoLang
 export GOROOT=/usr/local/go
 export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 #FOR mvim

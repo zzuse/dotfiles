@@ -59,6 +59,11 @@ source ~/.bash_profile
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+set -o vi
+
+PROMPT='
+Working Smart! $(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
+%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

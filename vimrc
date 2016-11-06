@@ -47,6 +47,7 @@ endif
 nmap <F5> :e ++enc=cp936<CR>   " for fileencoding is not utf8
 nmap <F6> :e ++enc=utf-8<CR>   " for fileencoding is utf8
 nmap <F7> :set syntax=fasm<CR> " for reading asm code
+nmap <F8> :set fileencoding=utf-8<CR> " for save to utf-8
 " Don't use Ex mode, use Q for formatting
 map Q gq
 

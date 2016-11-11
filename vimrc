@@ -247,6 +247,7 @@ let g:airline#extensions#default#layout = [
       \ [ 'c', 'z', 'y', 'x', 'warning' ],
       \ [ 'error', 'b', 'a' ]
       \ ]
+let g:airline_inactive_collapse=1
 
 " for NERDTree
 nnoremap <C-n>t :NERDTreeToggle<CR>

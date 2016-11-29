@@ -65,6 +65,9 @@ PROMPT='
 Working Smart! $(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
 %{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
 
+export GREP_OPTIONS="--color=auto"
+alias grep='grep -i $GREP_OPTIONS'
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

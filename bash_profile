@@ -17,7 +17,7 @@ export PATH="/opt/local/bin:/opt/local/sbin:/Users/zz/.do:$PATH"
 #FOR instantclient_11_2
 export DYLD_LIBRARY_PATH="/Users/zz/Documents/Software/instantclient_11_2;/usr/local/lib"
 export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"
-export ORACLE_HOME="/Users/zz/Documents/Software/instantclient_11_2"
+export ORACLE_HOME="/Users/zz/Documents/Software/instantclient_12_1"
 #FOR dummy cscope
 export CSCOPE_DB='/local/zhangzhen/cscope/$CSVIEW/cscope.out'
 #FOR terminal

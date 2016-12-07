@@ -31,7 +31,8 @@ binaries=(
 	socat
 	node
 	nmap
-    e2fsprogs
+	e2fsprogs
+	neofetch
 )
 
 echo "installing binaries..."

@@ -1,8 +1,34 @@
 [core]
-	excludesfile = ~/.gitignoreglobal
-	editor = vim
+    excludesfile = ~/.gitignoreglobal
+    editor = vim
 [user]
-	email = zzuse@outlook.com
-	name = zzuse
+    email = zzuse@outlook.com
+    name = zzuse
 [include]
     path = ~/.gitconfig.local
+[merge]
+    summary = true
+    tool = bcomp
+[mergetool]
+    prompt = false
+[mergetool "bcomp"]
+    trustExitCode = true
+    cmd = "/usr/local/bin/bcomp" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+[diff]
+    tool = bcomp
+[difftool]
+    prompt = false
+[difftool "bcomp"]
+    trustExitCode = true
+    cmd = "/usr/local/bin/bcomp" \"$LOCAL\" \"$REMOTE\"
+[format]
+    numbered = auto
+[alias]
+    dt = difftool
+    l = log --stat
+    cm = commit -m
+    gst = git status
+    ga = git add
+    gd = git diff
+    gcm = git common -m
+    gp = git push

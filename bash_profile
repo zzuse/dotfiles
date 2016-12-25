@@ -46,6 +46,8 @@ alias dus='du -d 2'
 alias vi='mvim'
 alias vim='mvim'
 alias ca='caffeinate'
+alias lo='ls -l |lolcat -a -d 5'
+alias b='bcomp'
 
 trap $HOME/.logout 0
 

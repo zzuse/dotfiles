@@ -25,10 +25,3 @@
     numbered = auto
 [alias]
     dt = difftool
-    l = log --stat
-    cm = commit -m
-    gst = git status
-    ga = git add
-    gd = git diff
-    gcm = git common -m
-    gp = git push

@@ -1,4 +1,4 @@
 #env RCRC=$HOME/dotfiles/rcrc rcup
 #export RCRC="$HOME/dotfiles/rcrc";rcup
-EXCLUDES="README.md LICENSE rcrc bootstrap.sh"
+EXCLUDES="README.md LICENSE rcrc bootstrap.sh tmux"
 DOTFILES_DIRS="$HOME/dotfiles-local $HOME/dotfiles"

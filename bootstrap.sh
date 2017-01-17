@@ -33,6 +33,8 @@ binaries=(
 	nmap
 	e2fsprogs
 	neofetch
+	reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
+	tmux
 )
 
 echo "installing binaries..."
@@ -56,6 +58,7 @@ apps=(
 	skitch
 	vlc
 	mplayerx
+	keycastr
 )
 
 # Install apps to /Applications

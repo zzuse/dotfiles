@@ -9,6 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="avit"
+#ZSH_THEME="base16"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -68,6 +69,23 @@ Working Smart! $(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
 export GREP_OPTIONS="--color=auto"
 alias grep='grep -i $GREP_OPTIONS'
 
+# tmux aliases
+alias ta='tmux attach'
+alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tns='tmux new-session -s'
+alias tm='~/dotfiles/tmux/tm'
+
+# find shorthand
+function f () {
+    find . -name "$1"
+}
+
+function finc () {
+    find . -name "*.cpp" -print | xargs grep $1
+    find . -name "*.cc" -print | xargs grep $1
+    find . -name "*.h" -print | xargs grep $1
+}
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

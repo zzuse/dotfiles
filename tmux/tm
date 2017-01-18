@@ -5,30 +5,34 @@
 # startup a "default" session if non currently exists
 # tmux has-session -t _default || tmux new-session -s _default -d
 
-# present menu for user to choose which workspace to open
-PS3="Please choose your session: "
-options=($(tmux list-sessions -F "#S" 2>/dev/null) "New Session" "zsh")
-echo "Available sessions"
-echo "------------------"
-echo " "
-select opt in "${options[@]}"
-do
-	case $opt in
-		"New Session")
-			read -p "Enter new session name: " SESSION_NAME
-            if [ -z "$SESSION_NAME" ]; then
-				SESSION_NAME="dev" 
-			fi
-			tmux new-session -s "$SESSION_NAME" -n ide \; split-window -v -p 20 -t "$SESSION_NAME" \; select-pane -t 1 \; clock-mode \; split-window -h -p 80 -t "$SESSION_NAME" \;
-			break
-			;;
-		"zsh")
-			zsh --login
-			break;;
-		*)
-			tmux attach-session -t $opt
-			break
-			;;
-	esac
-done
- 
+if [ -z "$1" ]; then
+	# present menu for user to choose which workspace to open
+	PS3="Please choose your session: "
+	options=($(tmux list-sessions -F "#S" 2>/dev/null) "New Session" "zsh")
+	echo "Available sessions"
+	echo "------------------"
+	echo " "
+	select opt in "${options[@]}"
+	do
+		case $opt in
+			"New Session")
+				read -p "Enter new session name: " SESSION_NAME
+				if [ -z "$SESSION_NAME" ]; then
+					SESSION_NAME="dev" 
+				fi
+				tmux new-session -s "$SESSION_NAME" -n ide \; split-window -v -p 20 -t "$SESSION_NAME" \; select-pane -t 1 \; clock-mode \; split-window -h -p 80 -t "$SESSION_NAME" \;
+				break
+				;;
+			"zsh")
+				zsh --login
+				break;;
+			*)
+				tmux attach-session -t $opt
+				break
+				;;
+		esac
+	done
+else
+	tmux new-session -s "$1" -n ide \; split-window -v -p 20 -t "$1" \; select-pane -t 1 \; clock-mode \; split-window -h -p 80 -t "$1" \;
+fi
+

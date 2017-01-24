@@ -6,6 +6,7 @@ if test ! $(which brew); then
 	    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+chsh -s $(which zsh)
 # Update homebrew recipes
 echo "updating brew..."
 brew update
@@ -25,15 +26,17 @@ binaries=(
 	htop
 	rcm
 	mackup
-	macvim --with-cscope --with-lua --with-override-system-vim
-	wget --with-iri
+	"macvim --with-cscope --with-lua --with-override-system-vim"
+	"wget --with-iri"
 	tree
 	socat
 	node
 	nmap
 	e2fsprogs
 	neofetch
-	reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
+	"reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste"
+	zsh
+	zsh-completions
 	tmux
 )
 
@@ -46,19 +49,38 @@ brew install caskroom/cask/brew-cask
 
 # Apps
 apps=(
-	appcleaner
-	atom
-	dropbox
-	evernote
-	google-chrome
-	google-drive
-	gpgtools
-	qq
-	qqmusic
-	skitch
-	vlc
-	mplayerx
-	keycastr
+    appcleaner
+    atom
+    dropbox
+    evernote
+    google-chrome
+    google-drive
+    gpgtools
+    qq
+    qqmusic
+    neteasemusic
+    skitch
+    vlc
+    mplayerx
+    keycastr
+    beyond-compare
+    aliwangwang
+    calibre
+    coderunner
+    filezilla
+    flux
+    geektool
+    gitup
+    hex-fiend
+    keepassx
+#    nutstore
+    shadowsocksx
+    staruml
+#    torbrowser
+    utorrent
+    virtualbox
+    vnc-viewer
+    baidunetdisk
 )
 
 # Install apps to /Applications

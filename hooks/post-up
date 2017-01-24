@@ -4,7 +4,7 @@ if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
   curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
+mvim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
 rm ~/.bashrc
 echo "installing zsh ..."
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh

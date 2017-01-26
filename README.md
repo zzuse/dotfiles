@@ -6,6 +6,12 @@ brew install mackup https://github.com/lra/mackup
 
 Installation
 ------------
+Install on a clean OSX system:
+    
+    First you need install Xcode
+    Then run bootstrap.sh, it will install brew, rcm, mackup, vim and zsh etc.
+    If you don't need install from bootstrap.sh, maybe you will install it manually as follow steps.
+    
 Install rcm on OSX:
 
     brew tap thoughtbot/formulae
@@ -18,7 +24,7 @@ Install rcm on Ubuntu:
     sudo apt-get update
     sudo apt-get install rcm
     
-Install to an old linux machine from source,my machine have many openssl problem, so:
+Install rcm to an old linux machine from source,my machine have many openssl problem, so:
 
     wget http://curl.haxx.se/ca/cacert.pem
     curl --cacert cacert.pem  -LO https://thoughtbot.github.io/rcm/dist/rcm-1.2.3.tar.gz
@@ -65,7 +71,7 @@ If I changed through web page, I will sync within terminal:
 Add dotfiles
 ------------
 
-in my configuration, mkrc command will add dotfiles to dotfiles-local by default, if U want to add to a dotfiles dir, U will run like this:
+in my configuration, mkrc command will add dotfiles to dotfiles-local by default, if U want to add to the dotfiles dir, U will run like this:
 
     mkrc -d dotfiles .XXX
     
@@ -81,7 +87,7 @@ after install mackup then to add mackup supported apps:
     [storage]
     engine = icloud
     [applications_to_sync]
-    ssh
+    terminal
 
 if an app is not officialy supported by mackup:
 
@@ -95,10 +101,6 @@ some command:
 
     # Install Mackup
     brew install mackup
-    # Launch it and back up your files
-    mackup backup
-    # Launch it and restore your files
-    mackup restore
     #Copy back any synced config file to its original place.
     mackup uninstall
     #Display the list of applications supported by Mackup.
@@ -106,10 +108,18 @@ some command:
     #help
     mackup -h
 
+you may use follow commands more often:
+
+    # Launch it and back up your files
+    mackup backup
+    # Launch it and restore your files
+    mackup restore
+
 Only for me
 ------------
 
 this part include multi-platform configure:
+(deprecated)
 
 * this can be more smart if adding system detecting code.
 * bashrc and bash_aliases is for Ubuntu
@@ -119,4 +129,3 @@ this part include multi-platform configure:
 TODO
 ----------
 
-add some bootstrap or brew.sh

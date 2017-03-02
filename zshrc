@@ -62,6 +62,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 set -o vi
 
+local _current_dir="%{$fg_bold[blue]%}%~%{$reset_color%} "
 PROMPT='
 Working Smart! $(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
 %{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
@@ -82,9 +83,10 @@ function f () {
 }
 
 function finc () {
-    find . -name "*.cpp" -print | xargs grep $1
-    find . -name "*.cc" -print | xargs grep $1
-    find . -name "*.h" -print | xargs grep $1
+    #find . -name "*.cpp" -print | xargs grep $1
+    #find . -name "*.cc" -print | xargs grep $1
+    #find . -name "*.h" -print | xargs grep $1
+    find . -type f |xargs -J % grep $1 %
 }
 # export MANPATH="/usr/local/man:$MANPATH"
 

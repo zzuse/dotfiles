@@ -34,11 +34,8 @@ set -o vi
 #FOR PS1
 PS1='\[\e[1m\]\[\e[36;41m\]\u@\[\e[34;43m\]Working Smart!\[\e[32;40m\]${PWD}>\[\e[0m\]'
 #FOR alias
-alias cdm='cd /Users/zz/Documents/Work/Company/Management'
-alias cds='cd /Users/zz/Documents/Work/Company/Lang/CPP/src'
-alias cdsf='cd /Users/zz/Documents/Work/Self/Lang/CPP/src'
-alias cdb='cd ~/.do'
-alias cdd='cd /Users/zz/Downloads'
+alias cdw='cd /Users/zz/Documents/Work/Company/Lang'
+alias cds='cd /Users/zz/Documents/Work/Self/Lang/'
 alias md5sum='md5 -r'
 alias grep='grep -i $GREP_OPTIONS'
 alias egrep='egrep $GREP_OPTIONS'

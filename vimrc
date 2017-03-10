@@ -10,6 +10,7 @@ if filereadable(expand("~/.vimrc.bundles"))
 endif
 
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileformat=unix
 
 "" after quit vim still show in terminal,not very useful now "set t_ti= t_te=
 

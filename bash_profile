@@ -5,12 +5,8 @@ echo "    /    /  /    / |  |  / \___ \ \  ___/ "
 echo "   /_____ \/_____ \|____/ /____  > \___  >"
 echo "         \/      \/            \/      \/ "
 echo "*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*"
-echo "ctrl+\` open terminal"
-echo "ctrl+1 send exit"
-echo "ctrl+2 swap option cmd"
-echo "ctrl+5 QuitQQ"
-echo "ctrl+6 RunQQ"
-echo "ctrl+0 RunQQMusic"
+echo "ctrl+\` macvim open finder selected"
+echo "ctrl+shift+E send exit"
 
 #FOR expect
 export PATH="/opt/local/bin:/opt/local/sbin:/Users/zz/.do:$PATH"
@@ -43,7 +39,7 @@ alias dus='du -d 2'
 alias vi='mvim'
 alias vim='mvim'
 alias ca='caffeinate'
-alias lo='ls -l |lolcat -a -d 5'
+alias lo='ls -la |lolcat -a -d 3'
 alias b='bcomp'
 
 trap $HOME/.logout 0

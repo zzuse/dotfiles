@@ -10,4 +10,6 @@ echo "installing zsh ..."
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 echo "you need: chsh -s /bin/zsh"
 echo "please add files to ~/Library/Dictionaries"
+echo "installing hammerspoon config..."
+git clone https://github.com/zzuse/hammerspoon.git ~/.hammerspoon
 

@@ -1,4 +1,5 @@
 #env RCRC=$HOME/dotfiles/rcrc rcup
+#put below one line to GITDIR .git/hooks/post-commit
 #export RCRC="$HOME/dotfiles/rcrc";rcup
 EXCLUDES="README.md LICENSE rcrc bootstrap.sh tmux"
 DOTFILES_DIRS="$HOME/dotfiles-local $HOME/dotfiles"

@@ -30,8 +30,8 @@ set -o vi
 #FOR PS1
 PS1='\[\e[1m\]\[\e[36;41m\]\u@\[\e[34;43m\]Working Smart!\[\e[32;40m\]${PWD}>\[\e[0m\]'
 #FOR alias
-alias cdw='cd /Users/zz/Documents/Work/Company/Lang'
-alias cds='cd /Users/zz/Documents/Work/Self/Lang/'
+alias cdw='cd /Users/zz/Documents/Code/Company/Lang'
+alias cds='cd /Users/zz/Documents/Code/Self/Lang/'
 alias md5sum='md5 -r'
 alias grep='grep -i $GREP_OPTIONS'
 alias egrep='egrep $GREP_OPTIONS'
@@ -41,6 +41,7 @@ alias vim='mvim'
 alias ca='caffeinate'
 alias lo='ls -la |lolcat -a -d 3'
 alias b='bcomp'
+alias zip='zip -x "*/\.*" -x "\.*"'
 
 trap $HOME/.logout 0
 

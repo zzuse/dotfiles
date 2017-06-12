@@ -38,6 +38,7 @@ binaries=(
 	zsh
 	zsh-completions
 	tmux
+	graphviz
 )
 
 echo "installing binaries..."

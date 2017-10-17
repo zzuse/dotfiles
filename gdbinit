@@ -692,3 +692,5 @@ set print vtbl on
 set print demangle on
 set demangle-style gnu-v3
 set print sevenbit-strings off
+set print element 0
+set max-value-size unlimited

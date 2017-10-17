@@ -11,3 +11,7 @@ testsuite
 cscope*
 *.sw[nop]
 .bundle
+CMake*
+*.cmake
+*.build
+*.xcodeproj

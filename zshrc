@@ -55,7 +55,9 @@ ZSH_THEME="avit"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source ~/.bash_profile
+if [ -f ~/.bash_profile ]; then
+    source ~/.bash_profile
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -64,11 +66,10 @@ set -o vi
 
 local _current_dir="%{$fg_bold[blue]%}%~%{$reset_color%} "
 PROMPT='
-Working Smart! $(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
+$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
 %{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
 
-export GREP_OPTIONS="--color=auto"
-alias grep='grep -i $GREP_OPTIONS'
+alias grep='grep -i --color=auto'
 
 # tmux aliases
 alias ta='tmux attach'
@@ -76,18 +77,39 @@ alias tls='tmux ls'
 alias tat='tmux attach -t'
 alias tns='tmux new-session -s'
 alias tm='~/dotfiles/tmux/tm'
+export PATH=$PATH:$HOME/dotfiles-oschina/do
 
 # find shorthand
 function f () {
-    find . -name "$1"
+    find . -name "*$1*"
 }
 
-function finc () {
-    #find . -name "*.cpp" -print | xargs grep $1
-    #find . -name "*.cc" -print | xargs grep $1
-    #find . -name "*.h" -print | xargs grep $1
-    find . -type f |xargs -J % grep $1 %
+# message client
+function mc () {
+    nc -u 127.0.0.1 2224
 }
+
+# message server
+function ms () {
+    nc -ul 2224
+}
+
+#OS specific
+#case `uname` in
+#  Darwin)
+#    source "${HOME}/.zshrc-Darwin"
+#  ;;
+#  Linux)
+#    source "${HOME}/.zshrc-Linux"
+#  ;;
+#  FreeBSD)
+#    source "${HOME}/.zshrc-`uname`"
+#  ;;
+#esac
+if [ -f "${HOME}/.zshrc-`uname`" ]; then
+    source "${HOME}/.zshrc-`uname`"
+fi
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

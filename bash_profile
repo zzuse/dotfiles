@@ -25,8 +25,9 @@ export GREP_COLOR="30;45"
 export GOPATH=$HOME/Documents/Work/Self/Lang/GoLang
 export GOROOT=/usr/local/go
 export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
-#FOR mvim
-set -o vi
+function finc () {
+    find . -type f |xargs -J % grep $1 %
+}
 #FOR PS1
 PS1='\[\e[1m\]\[\e[36;41m\]\u@\[\e[34;43m\]Working Smart!\[\e[32;40m\]${PWD}>\[\e[0m\]'
 #FOR alias

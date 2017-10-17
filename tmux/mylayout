@@ -1,0 +1,25 @@
+selectp -t 1    #选中第1个窗格
+splitw -v -p 40  #将其分成上下两个
+selectp -t 1     #选中第一个
+splitw -h -p 50  #将其分成左右两个
+selectp -t 1 
+splitw -h -p 50  #将其分成左右两个
+selectp -t 3 
+splitw -h -p 50  #将其分成左右两个
+new-window   -n taosm
+new-window   -n taosd
+new-window   -n taos
+new-window   -n script
+new-window   -n code
+new-window   -n nginx
+new-window   -n nc
+#new-session -s work -n mysql -d 'mysql'
+#new-window -n editor -t work
+#send-keys -t work:editor 'emacs' C-m
+#splitw -v -p 50  #将其分成上下两个
+#selectp -t 3 
+#splitw -v -p 50  #将其分成上下两个
+#selectp -t 2 
+#splitw -v -p 50  #将其分成上下两个
+#selectp -t 1 
+#splitw -v -p 50  #将其分成上下两个

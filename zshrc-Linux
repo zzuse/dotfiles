@@ -1,0 +1,12 @@
+
+#tmux>2.3 pane title
+function t () {
+    printf '\033]2;'$1'\033\\'
+}
+
+alias mm='make clean;make'
+source ~/dev/taosdata/tools/devenv.sh
+
+function finc () {
+    find . -type f |xargs -i grep -l $1 {}
+}

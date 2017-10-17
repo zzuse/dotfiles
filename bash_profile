@@ -28,6 +28,11 @@ export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 function finc () {
     find . -type f |xargs -J % grep $1 %
 }
+function fnew () {
+    sudo touch ~/timestamp
+    sudo rm ~/changedfiles.txt
+    sudo find -x / -newer ~/timestamp >~/changedfiles.txt
+}
 #FOR PS1
 PS1='\[\e[1m\]\[\e[36;41m\]\u@\[\e[34;43m\]Working Smart!\[\e[32;40m\]${PWD}>\[\e[0m\]'
 #FOR alias

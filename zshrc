@@ -77,7 +77,7 @@ alias tls='tmux ls'
 alias tat='tmux attach -t'
 alias tns='tmux new-session -s'
 alias tm='~/dotfiles/tmux/tm'
-export PATH=$PATH:$HOME/dotfiles-oschina/do
+export PATH=$PATH:$HOME/dotfiles-oschina/do:$HOME/opt/bin
 
 # find shorthand
 function f () {

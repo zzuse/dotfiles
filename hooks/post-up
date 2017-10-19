@@ -13,3 +13,10 @@ echo "please add files to ~/Library/Dictionaries"
 echo "installing hammerspoon config..."
 git clone https://github.com/zzuse/hammerspoon.git ~/.hammerspoon
 echo "please npm -g install cloc"
+echo "mkdir .tmux/plugins/"
+mkdir -p ~/.tmux/plugins/
+cd ~/.tmux/plugins/
+git clone https://github.com/tmux-plugins/tpm
+git clone https://github.com/tmux-plugins/tmux-sensible
+git clone https://github.com/tmux-plugins/tmux-yank
+echo "tmux done"

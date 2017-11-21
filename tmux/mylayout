@@ -1,17 +1,22 @@
 selectp -t 1    #选中第1个窗格
-splitw -v -p 40  #将其分成上下两个
-selectp -t 1     #选中第一个
-splitw -h -p 50  #将其分成左右两个
-selectp -t 1 
-splitw -h -p 50  #将其分成左右两个
-selectp -t 3 
-splitw -h -p 50  #将其分成左右两个
-new-window   -n taosm
-new-window   -n taosd
+splitw -v -p 80  #将其分成上下两个
+#selectp -t 1     #选中第一个
+#splitw -h -p 50  #将其分成左右两个
+#selectp -t 1 
+#splitw -h -p 50  #将其分成左右两个
+#selectp -t 3 
+#splitw -h -p 50  #将其分成左右两个
+new-window   -n taosm1
+new-window   -n taosm2
+new-window   -n taosd1
+new-window   -n taosd2
 new-window   -n taos
+new-window   -n http
 new-window   -n script
 new-window   -n code
+new-window   -n lua
 new-window   -n nginx
+new-window   -n nginxconf
 new-window   -n nc
 #new-session -s work -n mysql -d 'mysql'
 #new-window -n editor -t work

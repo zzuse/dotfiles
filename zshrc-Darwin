@@ -33,9 +33,9 @@ function fnew () {
     sudo rm ~/changedfiles.txt
     sudo find -x / -newer ~/timestamp >~/changedfiles.txt
 }
-#FOR PS1
-PS1='\[\e[1m\]\[\e[36;41m\]\u@\[\e[34;43m\]Working Smart!\[\e[32;40m\]${PWD}>\[\e[0m\]'
 #FOR alias
+alias cm='cmake -DCMAKE_BUILD_TYPE=Debug -G Xcode ../../src/taosdata'
+alias taos='cd /Users/zz/Documents/Code/Company/Lang/CPP/src/taosdata'
 alias cdw='cd /Users/zz/Documents/Code/Company/Lang'
 alias cds='cd /Users/zz/Documents/Code/Self/Lang/'
 alias md5sum='md5 -r'

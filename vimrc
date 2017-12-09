@@ -270,7 +270,7 @@ function! HLNext (blinktime)
     let target_pat = '\c\%#\%('.@/.'\)'
     let ring = matchadd('RedOnRed', target_pat, 101)
     redraw
-    exec 'sleep ' . float2nr(a:blinktime * 100) . 'm'
+    exec 'sleep ' . float2nr(a:blinktime * 10) . 'm'
     call matchdelete(ring)
     redraw
 endfunction

@@ -6,7 +6,6 @@ CVS
 media_format
 rate_one_test
 *.so
-*.log
 testsuite
 cscope*
 *.sw[nop]

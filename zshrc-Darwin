@@ -34,7 +34,7 @@ function fnew () {
     sudo find -x / -newer ~/timestamp >~/changedfiles.txt
 }
 #FOR alias
-alias cm='cmake -DCMAKE_BUILD_TYPE=Debug -G Xcode ../../src/taosdata'
+alias cm='cd /Users/zz/Documents/Code/Company/Lang/CPP/bin/debug; cmake -DCMAKE_BUILD_TYPE=Debug -G Xcode ../../src/taosdata'
 alias taos='cd /Users/zz/Documents/Code/Company/Lang/CPP/src/taosdata'
 alias cdw='cd /Users/zz/Documents/Code/Company/Lang'
 alias cds='cd /Users/zz/Documents/Code/Self/Lang/'

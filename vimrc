@@ -100,7 +100,10 @@ if has("autocmd")
             au BufNewFile,BufRead *.expr setf cpp
         endif
     augroup END
-
+    augroup sim
+        au BufNewFile,BufRead *.sim source ~/.vim/bundle/log.vim/syntax/sim.vim
+        au BufNewFile,BufRead nginx.conf source ~/.vim/bundle/log.vim/syntax/nginx.vim
+    augroup END
 
 else
 

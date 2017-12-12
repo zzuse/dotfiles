@@ -16,3 +16,6 @@ CMakeCache.txt
 *.cmake
 *.build
 *.xcodeproj
+.idea
+cmake-build-debug
+

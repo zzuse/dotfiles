@@ -104,6 +104,9 @@ if has("autocmd")
         au BufNewFile,BufRead *.sim source ~/.vim/bundle/log.vim/syntax/sim.vim
         au BufNewFile,BufRead nginx.conf source ~/.vim/bundle/log.vim/syntax/nginx.vim
     augroup END
+    augroup tbased 
+        au BufNewFile,BufRead tbasedlog.0,tbasedlog.1 source ~/.vim/bundle/log.vim/syntax/tbasedlog.vim
+    augroup END
 
 else
 

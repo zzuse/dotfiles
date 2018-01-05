@@ -48,6 +48,7 @@ alias ca='caffeinate'
 alias lo='ls -la |lolcat -a -d 3'
 alias b='bcomp'
 alias zip='zip -x "*/\.*" -x "\.*"'
+alias p='pomodoro 25 5  --notif=True'
 
 trap $HOME/.logout 0
 

@@ -25,7 +25,7 @@ Plug 'Shougo/neosnippet-snippets'
 " git branch
 Plug 'tpope/vim-fugitive'
 " json sort 
-Plug 'axiaoxin/vim-json-line-format'
+Plug 'zzuse/vim-json-line-format'
 Plug 'ctrlpvim/ctrlp.vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))

@@ -35,9 +35,8 @@ function fnew () {
 }
 #FOR alias
 alias cm='cd /Users/zz/Documents/Code/Company/Lang/CPP/bin/debug; cmake -DCMAKE_BUILD_TYPE=Debug -G Xcode ../../src/taosdata'
-alias taos='cd /Users/zz/Documents/Code/Company/Lang/CPP/src/taosdata'
-alias cdw='cd /Users/zz/Documents/Code/Company/Lang'
-alias cds='cd /Users/zz/Documents/Code/Self/Lang/'
+alias cdw='cd $HOME/Documents/Code/Company/'
+alias cds='cd $HOME/Documents/Code/Self/'
 alias md5sum='md5 -r'
 alias grep='grep -i $GREP_OPTIONS'
 alias egrep='egrep $GREP_OPTIONS'
@@ -47,6 +46,8 @@ alias vim='mvim'
 alias ca='caffeinate'
 alias lo='ls -la |lolcat -a -d 3'
 alias b='bcomp'
+alias o='open .'
+alias po='pomodoro 60 10 --alarm=False'
 alias zip='zip -x "*/\.*" -x "\.*"'
 alias p='pomodoro 25 5  --notif=True'
 

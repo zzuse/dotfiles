@@ -8,22 +8,25 @@ fi
 
 chsh -s $(which zsh)
 # Update homebrew recipes
+# FAQ1:sudo chown -R $(whoami):admin /usr/local/Homebrew/.git
 echo "updating brew..."
-brew update
+#brew update
 
 #taps
 
 taps=(
 	thoughtbot/formulae
+    caskroom/cask
 )
 echo "installing binaries..."
+echo "browse from http://braumeister.org"
 brew tap ${taps[@]}
 
 brew cleanup
 
 binaries=(
-	cntlm
-	htop
+#	cntlm
+#	htop
 	rcm
 	mackup
 	"macvim --with-cscope --with-lua --with-override-system-vim"
@@ -39,6 +42,9 @@ binaries=(
 	zsh-completions
 	tmux
 	graphviz
+    bazel
+    cmake
+    clang-format
 )
 
 echo "installing binaries..."
@@ -46,7 +52,7 @@ brew install ${binaries[@]}
 
 brew cleanup
 
-brew install caskroom/cask/brew-cask
+#brew install caskroom/cask/brew-cask
 
 # Apps
 apps=(
@@ -54,11 +60,9 @@ apps=(
     atom
     dropbox
     evernote
-    google-chrome
-    google-drive
-    gpgtools
-    qq
-    qqmusic
+    #google-chrome
+    #qq
+    #qqmusic
     neteasemusic
     skitch
     vlc
@@ -75,19 +79,33 @@ apps=(
     hex-fiend
     keepassx
 #    nutstore
-    shadowsocksx
+#    shadowsocksx
     staruml
 #    torbrowser
-    utorrent
     virtualbox
     vnc-viewer
-    baidunetdisk
+#    baidunetdisk
+    postman
+    wireshark
+    dukto
+    mysqlworkbench
+    pycharm-ce
+    visual-studio-code
+    hammerspoon
+    flux
+    downie
+    sourcetree
+    spectacle
+    amethyst
+    android-platform-tools
 )
 
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
 echo "installing apps..."
+echo "browse https://caskroom.github.io/search"
 brew cask install ${apps[@]}
+brew cask install caskroom/versions/java8
 
 echo "installing dotfiles..."
 export RCRC="$HOME/dotfiles/rcrc"

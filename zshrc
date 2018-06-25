@@ -8,7 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="avit"
+ZSH_THEME="random"
 #ZSH_THEME="base16"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -53,7 +53,7 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git ruby)
 
 if [ -f ~/.bash_profile ]; then
     source ~/.bash_profile
@@ -65,9 +65,9 @@ source $ZSH/oh-my-zsh.sh
 set -o vi
 
 local _current_dir="%{$fg_bold[blue]%}%~%{$reset_color%} "
-PROMPT='
-$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
-%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
+#PROMPT='
+#$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
+#%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
 
 alias grep='grep -i --color=auto'
 

@@ -22,9 +22,9 @@ export LSCOLORS='gxfxcxdxbxegedabagacad'
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="30;45" 
 #FOR Golang
-export GOPATH=$HOME/Documents/Work/Self/Lang/GoLang
-export GOROOT=/usr/local/go
-export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+export GOPATH=$HOME/Documents/Code/Self/go_workspace
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
 function finc () {
     find . -type f |xargs -J % grep $1 %
 }
@@ -50,6 +50,14 @@ alias o='open .'
 alias po='pomodoro 60 10 --alarm=False'
 alias zip='zip -x "*/\.*" -x "\.*"'
 alias p='pomodoro 25 5  --notif=True'
+
+function frameworkpython {
+    if [[ ! -z "$VIRTUAL_ENV" ]]; then
+        PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python3 "$@"
+    else
+        /usr/local/bin/python3 "$@"
+    fi
+}
 
 trap $HOME/.logout 0
 

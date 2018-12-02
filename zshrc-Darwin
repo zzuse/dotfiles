@@ -5,8 +5,8 @@ echo "    /    /  /    / |  |  / \___ \ \  ___/ "
 echo "   /_____ \/_____ \|____/ /____  > \___  >"
 echo "         \/      \/            \/      \/ "
 echo "*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*"
-echo "ctrl+\` macvim open finder selected"
-echo "ctrl+shift+E send exit"
+echo "ctrl+shift+E send exit in Terminal"
+echo "ctrl+shift+Q send exit in iTerm2"
 
 #FOR expect
 export PATH="/opt/local/bin:/opt/local/sbin:/Users/zz/.do:$PATH"
@@ -34,7 +34,6 @@ function fnew () {
     sudo find -x / -newer ~/timestamp >~/changedfiles.txt
 }
 #FOR alias
-alias cm='cd /Users/zz/Documents/Code/Company/Lang/CPP/bin/debug; cmake -DCMAKE_BUILD_TYPE=Debug -G Xcode ../../src/taosdata'
 alias cdw='cd $HOME/Documents/Code/Company/'
 alias cds='cd $HOME/Documents/Code/Self/'
 alias md5sum='md5 -r'

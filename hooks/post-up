@@ -8,15 +8,17 @@ mvim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
 rm ~/.bashrc
 echo "installing oh-my-zsh.git ..."
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-echo "please: chsh -s /bin/zsh"
-echo "please: add files to ~/Library/Dictionaries"
+echo "PLEASE: chsh -s /bin/zsh"
+echo "PLEASE: add files to ~/Library/Dictionaries"
 echo "installing hammerspoon.git config ..."
 git clone https://github.com/zzuse/hammerspoon.git ~/.hammerspoon
-echo "please: npm -g install cloc"
+echo "PLEASE: npm -g install cloc"
 echo "mkdir -p .tmux/plugins/"
+echo "installing tmux plugins..."
 mkdir -p ~/.tmux/plugins/
 cd ~/.tmux/plugins/
 git clone https://github.com/tmux-plugins/tpm
 git clone https://github.com/tmux-plugins/tmux-sensible
 git clone https://github.com/tmux-plugins/tmux-yank
-echo "tmux done"
+echo "installing zsh-autosuggestions ..."
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions

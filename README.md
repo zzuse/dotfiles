@@ -7,10 +7,12 @@ brew install mackup https://github.com/lra/mackup
 Installation
 ------------
 Install on a clean OSX system:
-    
+
+    The automation script is to install on an clean OSX, but some part(exclude brew command ...) also suit for Linux/Unix
     First you need install Xcode
     Then run bootstrap.sh, it will install brew, rcm, mackup, vim and zsh etc.
-    If you don't need install from bootstrap.sh, maybe you will install it manually as follow steps.
+    Or maybe you will install it manually as follow steps.
+    RCM is a dotfiles management system
     
 Install rcm on OSX:
 
@@ -121,10 +123,8 @@ Only for me
 this part include multi-platform configure:
 (deprecated)
 
-* this can be more smart if adding system detecting code.
-* bashrc and bash_aliases is for Ubuntu
-* bash_privacy is for REHL5
-* bash_profile is for Mac
+* bashrc and bash_aliases is for Ubuntu (deprecated, not in use)
+* bash_privacy is for REHL5 (deprecated, not in use)
 
 TODO
 ----------

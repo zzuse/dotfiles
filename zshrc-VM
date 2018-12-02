@@ -1,0 +1,4 @@
+# message client
+function mc () {
+    nc -u 127.0.0.1 2224
+}

@@ -53,7 +53,7 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby)
+plugins=(git ruby vi-mode last-working-dir zsh-autosuggestions)
 
 if [ -f ~/.bash_profile ]; then
     source ~/.bash_profile
@@ -62,38 +62,33 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-set -o vi
+# set -o vi
 
 local _current_dir="%{$fg_bold[blue]%}%~%{$reset_color%} "
-#PROMPT='
-#$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
-#%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
 
-alias grep='grep -i --color=auto'
-
-# tmux aliases
-alias ta='tmux attach'
-alias tls='tmux ls'
-alias tat='tmux attach -t'
-alias tns='tmux new-session -s'
-alias tm='~/dotfiles/tmux/tm'
+alias grep='grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+#color cat
 alias c='pygmentize -O style=borland -f console256 -g'
-export PATH=$PATH:$HOME/dotfiles-oschina/do:$HOME/opt/bin:$HOME/opt/sbin
+
+export PATH=$PATH:$HOME/dotfiles-oschina/do:$HOME/opt/bin:$HOME/opt/sbin:$HOME/Library/Python/3.6/bin
 
 # find shorthand
 function f () {
     find . -name "*$1*"
 }
 
-# message client
-function mc () {
-    nc -u 127.0.0.1 2224
-}
-
 # message server
 function ms () {
     nc -ul 2224
 }
+
+function rm(){  # 定义rm函数
+        timestamp=`date +%s`; # 定义时间戳垃圾袋
+        [ -d ~/rmbackup ] || mkdir -p ~/rmbackup; # 创建垃圾桶
+        mkdir ~/rmbackup/$timestamp; # 创建垃圾袋
+        /bin/mv -f $@ ~/rmbackup/$timestamp; #将垃圾移动到垃圾袋
+}
+export rm
 
 #OS specific
 #case `uname` in
@@ -109,6 +104,12 @@ function ms () {
 #esac
 if [ -f "${HOME}/.zshrc-`uname`" ]; then
     source "${HOME}/.zshrc-`uname`"
+fi
+if [ -f "${HOME}/.zshrc-Brain" ]; then
+    source "${HOME}/.zshrc-Brain"
+fi
+if [ -f "${HOME}/.zshrc-VM" ]; then
+    source "${HOME}/.zshrc-VM"
 fi
 
 # export MANPATH="/usr/local/man:$MANPATH"

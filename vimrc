@@ -30,13 +30,13 @@ set relativenumber
 set ic                   " ignore case
 set smartcase            " Case sensitive if we type an upper case
 set clipboard=unnamed
-"set cursorline           " set column or line color or "set cursorcolumn
 set path+=../include/
 
 if &diff
     "echo "diff mode"
 else
-    set cursorline
+    set cul
+    set cuc
 endif
 
 :nnoremap <Leader>c :set cursorline! <CR>
@@ -57,6 +57,25 @@ map Q gq
 " Also switch on highlighting the last used search pattern.
 syntax on
 set hlsearch
+"自动补全
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {<CR>}<ESC>O
+:inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(']')<CR>
+:inoremap " ""<ESC>i
+:inoremap ' ''<ESC>i
+function! ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endfunction
+filetype plugin indent on 
+"打开文件类型检测, 加了这句才可以用智能补全
+set completeopt=longest,menu
 " Only do this part when compiled with support for autocommands.
 " will put into seperated files
 if has("autocmd")

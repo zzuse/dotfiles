@@ -1,0 +1,29 @@
+
+#tmux>2.3 pane title
+function t () {
+    printf '\033]2;'$1'\033\\'
+}
+
+alias vi='vim'
+alias t='cd /unsullied/sharefs/zhangzhen02/isilon_share/work'
+
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/go_workspace
+
+export LC_ALL=en_US.UTF-8
+export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;42:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+
+function finc () {
+    find . -type f |xargs -i grep -l $1 {}
+}
+
+# MegFace v2
+export LD_LIBRARY_PATH=$HOME/megface-v2/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=$HOME/megface-v2/python:$PYTHONPATH
+
+
+# MegFace v2
+export LD_LIBRARY_PATH=/opt/megface-v2/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=/opt/megface-v2/python:$PYTHONPATH
+export PATH=/unsullied/sharefs/_rsde/sdk/megface-v2/utils:$PATH

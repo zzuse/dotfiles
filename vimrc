@@ -5,59 +5,86 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" using vim-plug to install plugins, seperated conf 
 if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
 endif
 
+" 猜测所打开文件的编码
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+" 新建文件时会根据fileencoding的设置编码来保存
+set fileencoding=utf-8
+" Vim的内部使用编码,默认设置等于locale
+set encoding=utf-8
+" 设置和终端所使用的编码一致
+set termencoding=utf-8
+" unix文件换行符
 set fileformat=unix
 
 "" after quit vim still show in terminal,not very useful now "set t_ti= t_te=
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set history=100           " keep 100 lines of command line history
 set undolevels=100        " keep 100 lines of undolevels command line history
 set ruler                " show the cursor position all the time
 set showcmd              " display incomplete commands
 set incsearch            " do incremental searching
-set mps+=<:>             " use % to match <>
-set tabstop=4
-set shiftwidth=4         " change the number of space characters inserted
+set mps+=<:>             " use % to match not only () but also  <>
+set tabstop=4            " TAB 解譯為幾個空白
+set shiftwidth=4         " change TAB to the number of space characters inserted
+set softtabstop=4        " 4 個空白會被當作一個 TAB 刪除
 set expandtab            " change tab to space
 set number               " numbers in side bar
-set relativenumber
+set relativenumber       " relative line count
 set ic                   " ignore case
 set smartcase            " Case sensitive if we type an upper case
-set clipboard=unnamed
 set path+=../include/
 
+" cursorline disabled in diff mode
 if &diff
     "echo "diff mode"
 else
+    " highlight cursorline
     set cul
+    " highlight cursorcolumn
     set cuc
+    " autocmd InsertLeave * se nocul  " 用浅色高亮当前行  
+    " autocmd InsertLeave * se nocuc  " 用浅色高亮当前行  
+    " autocmd InsertEnter * se cul    " 用浅色高亮当前行  
+    " autocmd InsertEnter * se cuc    " 用浅色高亮当前行  
 endif
+
+" Key Mappings, ! means press second time will revert back
 
 :nnoremap <Leader>c :set cursorline! <CR>
 :nnoremap <Leader>p :set paste! <CR>
 :nnoremap <Leader>n :set nu! <CR>
 :nnoremap <Leader>r :set relativenumber! <CR>
 :nnoremap <Leader>t :set expandtab! <CR>
+:nnoremap <Leader>q :q <CR>
+:nnoremap <Leader>wq :wq <CR>
+" Ignore whitespace in diffmode 
 :nnoremap <Leader>ww :set diffopt+=iwhite <CR>
 :nnoremap <Leader>nw :set diffopt-=iwhite <CR>
-nmap <F5> :e ++enc=cp936<CR>   " for fileencoding is not utf8
-nmap <F6> :e ++enc=utf-8<CR>   " for fileencoding is utf8
-nmap <F7> :set syntax=fasm<CR> " for reading asm code
-nmap <F8> :set fileencoding=utf-8<CR> " for save to utf-8
+" for file diff compare
+nmap <F4> :vert diffsplit
+" for fileencoding is not utf8
+nmap <F5> :e ++enc=cp936<CR>
+" for fileencoding is utf8
+nmap <F6> :e ++enc=utf-8<CR>
+" for reading asm code
+nmap <F7> :set syntax=fasm<CR>
+" for save to utf-8
+nmap <F8> :set fileencoding=utf-8<CR>
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 syntax on
+" 搜索数据时设置高亮
 set hlsearch
-"自动补全
+" 自动补全括号引号
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
 :inoremap { {<CR>}<ESC>O
@@ -123,10 +150,6 @@ if has("autocmd")
         au BufNewFile,BufRead *.sim source ~/.vim/bundle/log.vim/syntax/sim.vim
         au BufNewFile,BufRead nginx.conf source ~/.vim/bundle/log.vim/syntax/nginx.vim
     augroup END
-    augroup tbased 
-        au BufNewFile,BufRead tbasedlog.0,tbasedlog.1,tbaselog.0,tbaselog.1 source ~/.vim/bundle/log.vim/syntax/tbasedlog.vim
-    augroup END
-
 else
 
     set autoindent		" always set autoindenting on
@@ -135,7 +158,10 @@ endif " has("autocmd")
 
 " about colo and font
 colo molokai
+" 设置字体
 set gfn=Consolas:h12:cANSI
+
+" 自定义重设窗口的函数
 function MaximizeVOC()
     " put your actual values below
     set lines=41
@@ -154,38 +180,9 @@ endfunction
 :nnoremap <F1>m :call MaximizeVOC() <CR>
 :nnoremap <F2>m :call MaximizeMBP() <CR>
 
-" only windows, not macvim, TODO
+" for windows only
 if has ("gui_running")
-
     colo molokai
-    "	source $VIMRUNTIME/mswin.vim
-    "	behave mswin
-    "
-    "	set diffexpr=MyDiff()
-    "	function MyDiff()
-    "		let opt = '-a --binary '
-    "		if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-    "		if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-    "		let arg1 = v:fname_in
-    "		if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-    "		let arg2 = v:fname_new
-    "		if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-    "		let arg3 = v:fname_out
-    "		if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-    "		let eq = ''
-    "		if $VIMRUNTIME =~ ' '
-    "			if &sh =~ '\<cmd'
-    "				let cmd = '""' . $VIMRUNTIME . '\diff"'
-    "				let eq = '"'
-    "			else
-    "				let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    "			endif
-    "		else
-    "			let cmd = $VIMRUNTIME . '\diff'
-    "		endif
-    "		silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-    "	endfunction
-
 else
     if &term =~ "vt100"
         if has("terminfo")
@@ -305,3 +302,4 @@ if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
 endif
 
+set clipboard=unnamed    " 共享剪贴板

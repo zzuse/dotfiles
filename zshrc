@@ -53,7 +53,7 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby vi-mode last-working-dir zsh-autosuggestions)
+plugins=(git ruby vi-mode last-working-dir zsh-autosuggestions themes)
 
 if [ -f ~/.bash_profile ]; then
     source ~/.bash_profile

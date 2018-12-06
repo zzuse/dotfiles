@@ -1,11 +1,16 @@
 
 call plug#begin('~/.vim/bundle')
-" beautify
+" self color beautify for font and cusor line
 Plug 'zzuse/molokai'
-" self syntax
+" self log syntax color
 Plug 'zzuse/log.vim'
+" python module search"
+Plug 'zzuse/vim-pymodule'
+" status line 1
 Plug 'vim-airline/vim-airline'
+" status line 2
 Plug 'zzuse/statusline.vim'
+" for cscope support
 Plug 'zzuse/cscope_maps.vim'
 " google search engine
 Plug 'szw/vim-g'
@@ -19,13 +24,16 @@ Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'fatih/vim-go'
 " multi language syntax compile support
 Plug 'sheerun/vim-polyglot'
+" compete
 Plug 'Shougo/neocomplete'
+" snippet
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 " git branch
 Plug 'tpope/vim-fugitive'
 " json sort 
 Plug 'zzuse/vim-json-line-format'
+" Most Recently Used (MRU) files monitoring
 Plug 'ctrlpvim/ctrlp.vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))

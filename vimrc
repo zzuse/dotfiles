@@ -278,6 +278,11 @@ nnoremap <C-n>t :NERDTreeToggle<CR>
 " :p:h on a directory name results on the directory name itself
 nnoremap <C-n>p :NERDTree %:p:h<CR>
 
+" for indentLine
+" let g:indentLine_color_term = 239
+" let g:indentLine_bgcolor_term = 202
+let g:indentLine_char = '⎸'
+
 " from Damian Conway
 nnoremap <silent> n   n:call HLNext(0.4)<cr>
 nnoremap <silent> N   N:call HLNext(0.4)<cr>

@@ -35,6 +35,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'zzuse/vim-json-line-format'
 " Most Recently Used (MRU) files monitoring
 Plug 'ctrlpvim/ctrlp.vim'
+"
+Plug 'Yggdroot/indentLine'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

@@ -2,8 +2,8 @@
 # Check for Homebrew,
 # Install if we don't have it
 if test ! $(which brew); then
-	  echo "Installing homebrew..."
-	    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	echo "Installing homebrew..."
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 chsh -s $(which zsh)
@@ -16,7 +16,6 @@ echo "updating brew..."
 
 taps=(
 	thoughtbot/formulae
-    caskroom/cask
 )
 echo "installing binaries..."
 echo "browse from http://braumeister.org"
@@ -28,23 +27,24 @@ binaries=(
 #	cntlm
 #	htop
 	rcm
-	mackup
-	"macvim --with-cscope --with-lua --with-override-system-vim"
-	"wget --with-iri"
+#	mackup
+	macvim
+#	"wget --with-iri"
 	tree
 	socat
 	node
 	nmap
-	e2fsprogs
-	neofetch
-	"reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste"
+#	e2fsprogs
+#	neofetch
+#	"reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste"
 	zsh
 	zsh-completions
 	tmux
-	graphviz
-    bazel
-    cmake
-    clang-format
+#	graphviz
+#	bazel
+	cmake
+	clang-format
+    telnet
 )
 
 echo "installing binaries..."
@@ -52,52 +52,46 @@ brew install ${binaries[@]}
 
 brew cleanup
 
-#brew install caskroom/cask/brew-cask
-
 # Apps
 apps=(
     appcleaner
-    atom
-    dropbox
-    evernote
+    #evernote
     #google-chrome
     #qq
-    #qqmusic
-    neteasemusic
-    skitch
-    vlc
-    mplayerx
+    qqmusic
+    #neteasemusic
+    #skitch
+    #vlc
+    #mplayerx
     keycastr
-    beyond-compare
-    aliwangwang
-    calibre
-    coderunner
-    filezilla
-    flux
-    geektool
+    #beyond-compare
+    #aliwangwang
+    #calibre
+    #coderunner
+    #filezilla
+    #geektool
     gitup
-    hex-fiend
-    keepassx
-#    nutstore
-#    shadowsocksx
-    staruml
-#    torbrowser
-    virtualbox
+    #hex-fiend
+    #keepassx
+    #nutstore
+    #shadowsocksx
+    #staruml
+    #torbrowser
+    #virtualbox
     vnc-viewer
-#    baidunetdisk
-    postman
-    wireshark
-    dukto
-    mysqlworkbench
-    pycharm-ce
-    visual-studio-code
-    hammerspoon
-    flux
-    downie
-    sourcetree
-    spectacle
-    amethyst
-    android-platform-tools
+    #baidunetdisk
+    #postman
+    #wireshark
+    #dukto
+    #mysqlworkbench
+    #pycharm-ce
+    #visual-studio-code
+    #hammerspoon
+    #downie
+    #sourcetree
+    #spectacle
+    #amethyst
+    #android-platform-tools
 )
 
 # Install apps to /Applications

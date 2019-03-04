@@ -33,6 +33,10 @@ function fnew () {
     sudo rm ~/changedfiles.txt
     sudo find -x / -newer ~/timestamp >~/changedfiles.txt
 }
+function power() { 
+    theme powerlevel9k/powerlevel9k
+    echo -e "\033]50;SetProfile=nerdfont\a" 
+}
 #FOR alias
 alias cdw='cd $HOME/Documents/Code/Company/'
 alias cds='cd $HOME/Documents/Code/Self/'

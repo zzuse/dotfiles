@@ -32,7 +32,7 @@ Plug 'Shougo/neosnippet-snippets'
 " git branch
 Plug 'tpope/vim-fugitive'
 " json sort 
-Plug 'zzuse/vim-json-line-format'
+Plug 'axiaoxin/vim-json-line-format'
 " Most Recently Used (MRU) files monitoring
 Plug 'ctrlpvim/ctrlp.vim'
 "

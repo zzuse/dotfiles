@@ -37,6 +37,8 @@ Plug 'axiaoxin/vim-json-line-format'
 Plug 'ctrlpvim/ctrlp.vim'
 "
 Plug 'Yggdroot/indentLine'
+" Python soppurt
+" Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

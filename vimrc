@@ -87,7 +87,7 @@ set hlsearch
 " 自动补全括号引号
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {<CR>}<ESC>O
+:inoremap { {}<ESC>i
 :inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap [ []<ESC>i
 :inoremap ] <c-r>=ClosePair(']')<CR>
@@ -301,6 +301,10 @@ function! HLNext (blinktime)
     call matchdelete(ring)
     redraw
 endfunction
+
+" for python-mode plugin
+
+let g:pymode_python = 'python3'
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

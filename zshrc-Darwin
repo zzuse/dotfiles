@@ -22,8 +22,8 @@ export LSCOLORS='gxfxcxdxbxegedabagacad'
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="30;45" 
 #FOR Golang
-export GOPATH=$HOME/Documents/Code/Self/go_workspace
-export GOROOT=$HOME/go
+export GOPATH=$HOME/Documents/Code/Self/go_workspace:$HOME/Documents/Code/Self/go_learning/
+export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 function finc () {
     find . -type f |xargs -J % grep $1 %

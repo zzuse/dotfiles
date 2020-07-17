@@ -18,3 +18,4 @@ function finc () {
     find . -type f |xargs -i grep -l $1 {}
 }
 
+source ~/.aliases

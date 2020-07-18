@@ -1,16 +1,16 @@
 # dotfiles
-===
+-----------
 inspired by https://github.com/thoughtbot/dotfiles  
 git clone https://github.com/zzuse/dotfiles.git  
-brew install mackup https://github.com/lra/mackup
+(deprecated) brew install mackup https://github.com/lra/mackup
 
 Installation
 ------------
-Install on a clean OSX system:
+Install on a fresh clean OSX system:
 
-    The automation script is to install on an clean OSX, but some part(exclude brew command ...) also suit for Linux/Unix
+    The automation script is to install on an fresh clean OSX, but some part(exclude brew command ...) also suit for Linux/Unix
     First you need install Xcode
-    Then run bootstrap.sh, it will install brew, rcm, mackup, vim and zsh etc.
+    Then run ##bootstrap.sh##, it will install brew, rcm, mackup, vim and zsh etc.
     Or maybe you will install it manually as follow steps.
     RCM is a dotfiles management system
     
@@ -26,6 +26,13 @@ Install rcm on Ubuntu:
     sudo apt-get update
     sudo apt-get install rcm
     
+Install rcm on Centos:
+
+    cd /etc/yum.repos.d/
+    wget https://download.opensuse.org/repositories/utilities/RHEL_7/utilities.repo
+    yum install rcm
+
+
 Install rcm to an old linux machine from source,my machine have many openssl problem, so:
 
     wget http://curl.haxx.se/ca/cacert.pem
@@ -57,7 +64,7 @@ You can safely run rcup multiple times to update:
 
 some sensitive data will add to private git-locations, so export RCRC other values to adapt to private git-locations
     
-Update dotfiles
+Maintain dotfiles
 ------------
 
 I can edit files in dotfiles directory, after that I just need to do:
@@ -79,7 +86,7 @@ in my configuration, mkrc command will add dotfiles to dotfiles-local by default
     
 then it will symlink the .XXX to dotfiles dir as dotfiles/XXX
 
-Back up OSX APP plist or other files to iCloud 
+Back up OSX APP plist or other files to iCloud (deprecated)
 ------------
 
 some none dotfiles will use mackup to backup  
@@ -117,14 +124,10 @@ you may use follow commands more often:
     # Launch it and restore your files
     mackup restore
 
-Only for me
+Backup Apps
 ------------
 
-this part include multi-platform configure:
-(deprecated)
-
-* bashrc and bash_aliases is for Ubuntu (deprecated, not in use)
-* bash_privacy is for REHL5 (deprecated, not in use)
+    brew bundle dump
 
 TODO
 ----------

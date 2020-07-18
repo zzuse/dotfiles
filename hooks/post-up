@@ -24,3 +24,6 @@ echo "installing zsh-autosuggestions ..."
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "installing zsh-syntax-highlighting ..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+xargs -n1 code --install-extension < ~/.vscode-extensions.txt
+rm ~/Library/Application\ Support/Code/User/settings.json
+ln -s ~/.vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json

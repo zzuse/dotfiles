@@ -12,6 +12,8 @@ chsh -s $(which zsh)
 echo "updating brew..."
 #brew update
 
+echo "before install with brew, you can refer to Brewfile"
+
 #taps
 
 taps=(

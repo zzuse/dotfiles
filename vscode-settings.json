@@ -1,0 +1,92 @@
+{
+    "window.zoomLevel": 1,
+    "clang-format.executable": "/usr/local/bin/clang-format",
+    "editor.formatOnSave": true,
+    "workbench.statusBar.visible": true,
+    "workbench.sideBar.location": "left",
+    "editor.minimap.enabled": false,
+    "files.exclude": {
+        "**/*.wk": true,
+        "**/*.log": true,
+        "**/*.o": true,
+        ".git": true,
+        ".cache": true
+    },
+    "files.autoGuessEncoding": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "python.jediEnabled": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "C_Cpp.updateChannel": "Insiders",
+    "python.linting.pylintEnabled": true,
+    "files.associations": {
+        "*.txt": "makefile"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "go.gocodeAutoBuild": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true
+    },
+    "workbench.colorTheme": "Shades of Purple",
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#0bc433",
+        "statusBar.background": "#0bc433",
+        "statusBar.foreground": "#101110"
+    },
+    "editor.tokenColorCustomizations": {
+        "[Shades of Purple]": {
+            "textMateRules": [
+                {
+                    "scope": "storage.type.built-in.primitive.cpp",
+                    "settings": {
+                        "foreground": "#eaee0f"
+                    }
+                },
+                {
+                    "scope": "entity.name.type.parameter.cpp",
+                    "settings": {
+                        "foreground": "#00fc15"
+                    }
+                },
+                {
+                    "scope": "entity.name.function.call.cpp",
+                    "settings": {
+                        "foreground": "#ff6f00"
+                    }
+                },
+                {
+                    "scope": "meta.body.function.definition.cpp",
+                    "settings": {
+                        "foreground": "#00ff2a"
+                    }
+                },
+                {
+                    "scope": "source.cpp",
+                    "settings": {
+                        "foreground": "#70ee65"
+                    }
+                }
+            ]
+        }
+    },
+    "ponyssh.hosts": {
+        "arm2": {
+            "host": "10.122.101.176",
+            "username": "zhangzhen",
+            "password": true
+        }
+    },
+    "cmake.configureOnOpen": false,
+    "[python]": {},
+    "workbench.startupEditor": "welcomePage",
+    "tabnine.experimentalAutoImports": true,
+    "git.ignoreLegacyWarning": true,
+    "python.languageServer": "Microsoft"
+}

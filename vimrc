@@ -294,7 +294,7 @@ let g:airline#extensions#default#layout = [
       \ [ 'c', 'z', 'y', 'x', 'warning' ],
       \ [ 'error', 'b', 'a' ]
       \ ]
-let g:airline_extensions = []   “ 消除卡顿
+let g:airline_extensions = []   " 消除卡顿
 let g:airline_inactive_collapse=1
 
 " for NERDTree

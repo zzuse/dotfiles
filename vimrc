@@ -39,6 +39,7 @@ set relativenumber       " relative line count
 set ic                   " ignore case
 set smartcase            " Case sensitive if we type an upper case
 set path+=../include/
+set foldmethod=syntax
 
 " cursorline disabled in diff mode
 if &diff
@@ -61,6 +62,7 @@ endif
 :nnoremap <Leader>n :set nu! <CR>
 :nnoremap <Leader>r :set relativenumber! <CR>
 :nnoremap <Leader>t :set expandtab! <CR>
+:nnoremap <Leader>p :call Myclosepair()<CR>
 :nnoremap <Leader>q :q <CR>
 :nnoremap <Leader>wq :wq <CR>
 " Ignore whitespace in diffmode 
@@ -84,22 +86,44 @@ map Q gq
 syntax on
 " 搜索数据时设置高亮
 set hlsearch
+
 " 自动补全括号引号
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {}<ESC>i
-:inoremap } <c-r>=ClosePair('}')<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-:inoremap " ""<ESC>i
-:inoremap ' ''<ESC>i
-function! ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
+let g:my_closepair = 2
+function Myclosepair()
+    if g:my_closepair > 1
+        let g:my_closepair = 1
+        :inoremap ( ()<ESC>i
+        :inoremap ) <c-r>=ClosePair(')')<CR>
+        :inoremap { {}<ESC>i
+        :inoremap } <c-r>=ClosePair('}')<CR>
+        :inoremap [ []<ESC>i
+        :inoremap ] <c-r>=ClosePair(']')<CR>
+        :inoremap " ""<ESC>i
+        :inoremap ' ''<ESC>i
+        function! ClosePair(char)
+            if getline('.')[col('.') - 1] == a:char
+                return "\<Right>"
+            else
+                return a:char
+            endif
+        endfunction
     else
-        return a:char
+        let g:my_closepair = 2
+        :inoremap ( (
+        :inoremap ) <c-r>=ClosePair(')')<CR>
+        :inoremap { {
+        :inoremap } <c-r>=ClosePair('}')<CR>
+        :inoremap [ [
+        :inoremap ] <c-r>=ClosePair(']')<CR>
+        :inoremap " "
+        :inoremap ' '
+        function! ClosePair(char)
+            return a:char
+        endfunction
     endif
 endfunction
+call Myclosepair()
+
 filetype plugin indent on 
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
@@ -150,6 +174,7 @@ if has("autocmd")
         au BufNewFile,BufRead *.sim source ~/.vim/bundle/log.vim/syntax/sim.vim
         au BufNewFile,BufRead nginx.conf source ~/.vim/bundle/log.vim/syntax/nginx.vim
     augroup END
+    au BufRead * normal zR  " 默认不折叠
 else
 
     set autoindent		" always set autoindenting on
@@ -208,8 +233,6 @@ else
     endif
 endif
 
-" for neoComplete
-let g:neocomplete#enable_at_startup = 1
 "  and enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 "  Tell Neosnippet about self snippets
@@ -271,6 +294,7 @@ let g:airline#extensions#default#layout = [
       \ [ 'c', 'z', 'y', 'x', 'warning' ],
       \ [ 'error', 'b', 'a' ]
       \ ]
+let g:airline_extensions = []   “ 消除卡顿
 let g:airline_inactive_collapse=1
 
 " for NERDTree
@@ -303,7 +327,6 @@ function! HLNext (blinktime)
 endfunction
 
 " for python-mode plugin
-
 let g:pymode_python = 'python3'
 
 " Local config

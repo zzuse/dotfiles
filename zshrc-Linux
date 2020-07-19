@@ -10,6 +10,7 @@ export TIMEOUT=0
 export TMOUT=0
 
 alias vi='/home/zhangzhen/opt/bin/vim'
+alias vim='vi'
 alias t='cd /mnt/data/zhangzhen/'
 alias dus='du --max-depth=1 -h|sort -n'
 

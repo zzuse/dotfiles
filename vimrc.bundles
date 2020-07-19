@@ -1,6 +1,6 @@
 
 call plug#begin('~/.vim/bundle')
-" self color beautify for font and cusor line
+"" self color beautify for font and cusor line
 Plug 'zzuse/molokai'
 " self log syntax color
 Plug 'zzuse/log.vim'
@@ -12,33 +12,44 @@ Plug 'vim-airline/vim-airline'
 Plug 'zzuse/statusline.vim'
 " for cscope support
 Plug 'zzuse/cscope_maps.vim'
+
 " google search engine
 Plug 'szw/vim-g'
-" dash search
-Plug 'rizzatti/dash.vim'
 " nerdtree On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
 "" all lanugage support
 "Plug 'scrooloose/syntastic'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' }
 Plug 'fatih/vim-go'
 " multi language syntax compile support
 Plug 'sheerun/vim-polyglot'
+
 " compete
-Plug 'Shougo/neocomplete'
+"Plug 'Shougo/neocomplete'
+"let g:neocomplete#enable_at_startup = 0
+Plug 'Shougo/deoplete.nvim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 0
 " snippet
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 " git branch
 Plug 'tpope/vim-fugitive'
 " json sort 
-Plug 'axiaoxin/vim-json-line-format'
+"Plug 'axiaoxin/vim-json-line-format'
 " Most Recently Used (MRU) files monitoring
 Plug 'ctrlpvim/ctrlp.vim'
-"
+" Indent
 Plug 'Yggdroot/indentLine'
-" Python soppurt
-" Plug 'python-mode/python-mode', { 'branch': 'develop' }
+" Python support
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

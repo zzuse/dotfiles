@@ -25,8 +25,7 @@ export GREP_COLOR="30;45"
 export GOPATH=$HOME/Documents/Code/Self/go_workspace:$HOME/Documents/Code/Self/go_learning/
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
-#FOR badge
-export badge='Local'
+
 #FUNCTIONS
 function finc () {
     find . -type f |xargs -J % grep $1 %

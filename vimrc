@@ -58,7 +58,7 @@ endif
 " Key Mappings, ! means press second time will revert back
 
 :nnoremap <Leader>c :set cursorline! <CR>
-:nnoremap <Leader>p :set paste! <CR>
+:nnoremap <Leader>a :set paste! <CR>
 :nnoremap <Leader>n :set nu! <CR>
 :nnoremap <Leader>r :set relativenumber! <CR>
 :nnoremap <Leader>t :set expandtab! <CR>

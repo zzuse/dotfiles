@@ -6,20 +6,6 @@ splitw -v -p 80  #将其分成上下两个
 #splitw -h -p 50  #将其分成左右两个
 #selectp -t 3 
 #splitw -h -p 50  #将其分成左右两个
-new-window   -n taosd1
-new-window   -n taosd2
-new-window   -n taosd3
-new-window   -n tbase
-new-window   -n script
-new-window   -n sim
-new-window   -n error
-new-window   -n tool
-new-window   -n code
-new-window   -n ps
-new-window   -n redundent
-new-window   -n log1
-new-window   -n log2
-new-window   -n log3
 #new-session -s work -n mysql -d 'mysql'
 #new-window -n editor -t work
 #send-keys -t work:editor 'emacs' C-m

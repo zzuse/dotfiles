@@ -112,6 +112,48 @@ if [ -f "${HOME}/.zshrc-VM" ]; then
     source "${HOME}/.zshrc-VM"
 fi
 
+#FOR echo
+if [ -t 1 ]; then
+  RB_RED=$(printf '\033[38;5;196m')
+  RB_ORANGE=$(printf '\033[38;5;202m')
+  RB_YELLOW=$(printf '\033[38;5;226m')
+  RB_GREEN=$(printf '\033[38;5;082m')
+  RB_BLUE=$(printf '\033[38;5;021m')
+  RB_INDIGO=$(printf '\033[38;5;093m')
+  RB_VIOLET=$(printf '\033[38;5;163m')
+
+  RED=$(printf '\033[31m')
+  GREEN=$(printf '\033[32m')
+  YELLOW=$(printf '\033[33m')
+  BLUE=$(printf '\033[34m')
+  BOLD=$(printf '\033[1m')
+  RESET=$(printf '\033[m')
+else
+  RB_RED=""
+  RB_ORANGE=""
+  RB_YELLOW=""
+  RB_GREEN=""
+  RB_BLUE=""
+  RB_INDIGO=""
+  RB_VIOLET=""
+
+  RED=""
+  GREEN=""
+  YELLOW=""
+  BLUE=""
+  BOLD=""
+  RESET=""
+fi
+
+printf "%s   ________%s________%s __ __ %s  ______%s  ____  %s\n" $RB_RED $RB_ORANGE $RB_YELLOW $RB_GREEN $RB_BLUE $RB_RESET
+printf "%s   \___   /%s\___   /%s|  |  \%s /  ___/%s_/ __ \ %s\n" $RB_RED $RB_ORANGE $RB_YELLOW $RB_GREEN $RB_BLUE $RB_RESET
+printf "%s    /    / %s /    / %s|  |  /%s \___ \ %s\  ___/ %s\n" $RB_RED $RB_ORANGE $RB_YELLOW $RB_GREEN $RB_BLUE $RB_RESET
+printf "%s   /_____ \%s/_____ \%s|____/ %s/____  >%s \___  >%s\n" $RB_RED $RB_ORANGE $RB_YELLOW $RB_GREEN $RB_BLUE $RB_RESET
+printf "%s         \/%s      \/%s       %s     \/ %s     \/ %s\n" $RB_RED $RB_ORANGE $RB_YELLOW $RB_GREEN $RB_BLUE $RB_RESET
+printf "%s*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*%s\n" $RB_VIOLET ${BOLD} $RB_RESET
+printf "%s%sctrl+shift+Q send exit in iTerm2%s\n" $RB_INDIGO ${BOLD} $RB_RESET
+printf "%s%sctrl+shift+option+left send topleft in phoenix%s\n" $RB_INDIGO ${BOLD} $RB_RESET
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

@@ -1,12 +1,3 @@
-#FOR echo
-echo "   ________________ __ __   ______  ____  "
-echo "   \___   /\___   /|  |  \ /  ___/_/ __ \ "
-echo "    /    /  /    / |  |  / \___ \ \  ___/ "
-echo "   /_____ \/_____ \|____/ /____  > \___  >"
-echo "         \/      \/            \/      \/ "
-echo "*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*"
-echo "ctrl+shift+Q send exit in iTerm2"
-echo "ctrl+shift+option+left send topleft in phoenix"
 
 #FOR expect
 export PATH="/opt/local/bin:/opt/local/sbin:/Users/zz/.do:$PATH"

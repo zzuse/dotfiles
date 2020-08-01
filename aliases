@@ -5,7 +5,7 @@ alias mkdir="mkdir -p"
 alias gl='git log --oneline'
 alias gs='git status'
 alias rmc='sudo rm core.*'
-alias rmr='sudo rm '
+alias rmr='sudo rm -r'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

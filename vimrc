@@ -40,6 +40,12 @@ set ic                   " ignore case
 set smartcase            " Case sensitive if we type an upper case
 set path+=../include/
 set foldmethod=syntax
+set nobackup
+set undodir=~/.vim/undodir
+
+if !isdirectory(&undodir)
+  call mkdir(&undodir, 'p', 0700)
+endif
 
 " cursorline disabled in diff mode
 if &diff
@@ -208,6 +214,7 @@ endfunction
 " for windows only
 if has ("gui_running")
     colo molokai
+    set mouse=a
 else
     if &term =~ "vt100"
         if has("terminfo")

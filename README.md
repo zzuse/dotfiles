@@ -2,7 +2,10 @@
 -----------
 inspired by https://github.com/thoughtbot/dotfiles  
 git clone https://github.com/zzuse/dotfiles.git  
-(deprecated) brew install mackup https://github.com/lra/mackup
+(deprecated) brew install mackup https://github.com/lra/mackup  
+Just run rcup, all is set  
+It will first link all configurations as dotfiles  
+Then run hooks/post-up,which is a bunch of installation  
 
 Installation
 ------------

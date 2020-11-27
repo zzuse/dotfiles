@@ -82,13 +82,13 @@ function ms () {
     nc -ul 2224
 }
 
-function rm(){  # 定义rm函数
-        timestamp=`date +%s`; # 定义时间戳垃圾袋
-        [ -d ~/rmbackup ] || mkdir -p ~/rmbackup; # 创建垃圾桶
-        mkdir ~/rmbackup/$timestamp; # 创建垃圾袋
-        /bin/mv -f $@ ~/rmbackup/$timestamp; #将垃圾移动到垃圾袋
-}
-export rm
+# function rm(){  # 定义rm函数
+#         timestamp=`date +%s`; # 定义时间戳垃圾袋
+#         [ -d ~/rmbackup ] || mkdir -p ~/rmbackup; # 创建垃圾桶
+#         mkdir ~/rmbackup/$timestamp; # 创建垃圾袋
+#         /bin/mv -f $@ ~/rmbackup/$timestamp; #将垃圾移动到垃圾袋
+# }
+# export rm
 
 #OS specific
 #case `uname` in

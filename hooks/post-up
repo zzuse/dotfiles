@@ -7,17 +7,32 @@ fi
 case `uname` in
   Darwin)
     mvim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
+    xargs -n1 code --install-extension < ~/.vscode-extensions.txt
+    rm ~/Library/Application\ Support/Code/User/settings.json
+    ln -s ~/.vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
+    echo "installing hammerspoon.git config ..."
+    git clone https://github.com/zzuse/hammerspoon.git ~/.hammerspoon
+    echo "PLEASE: add files to ~/Library/Dictionaries"
   ;;
   Linux)
+    rm ~/.zshrc-Brain ~/.zshrc-Darwin ~/.zshrc-VM ~/.tmux-Darwin.conf ~/.bashrc
+    git clone https://github.com/vim/vim.git ~/vim
+    cd ~/vim
+    ./configure --prefix=/home/zhangzhen/opt/ \
+    --with-features=huge \
+    --enable-multibyte \
+    --enable-rubyinterp \
+    --enable-pythoninterp \
+    --enable-python3interp=yes \
+    --with-python3-config-dir=/usr/lib64/python3.6/config-3.6m-x86_64-linux-gnu \
+    --enable-luainterp --enable-perlinterp
+    make -j8;make install
     vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
   ;;
 esac
 echo "installing oh-my-zsh.git ..."
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 echo "PLEASE: chsh -s /bin/zsh"
-echo "PLEASE: add files to ~/Library/Dictionaries"
-echo "installing hammerspoon.git config ..."
-git clone https://github.com/zzuse/hammerspoon.git ~/.hammerspoon
 echo "PLEASE: npm -g install cloc"
 echo "mkdir -p .tmux/plugins/"
 echo "installing tmux plugins..."
@@ -30,6 +45,3 @@ echo "installing zsh-autosuggestions ..."
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "installing zsh-syntax-highlighting ..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-xargs -n1 code --install-extension < ~/.vscode-extensions.txt
-rm ~/Library/Application\ Support/Code/User/settings.json
-ln -s ~/.vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json

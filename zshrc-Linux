@@ -13,7 +13,7 @@ alias vi='/home/zhangzhen/opt/bin/vim'
 alias vim='vi'
 alias t='cd /mnt/data/zhangzhen/'
 alias dus='du --max-depth=1 -h|sort -n'
-alias tm='tmux set-option -g history-limit 50000 \; new-session -s zz'
+alias tm='~/dotfiles/tmux/tm'
 alias tmm="tmux new-window 'cmatrix -u 9';tmux split-window -h -p 80 'cmatrix -u 9';tmux split-window -h -p 20 'cmatrix -u 9';tmux select-pane -t 2;tmux split-window -v -p 80;tmux split-window -v -p 20 'cmatrix -u 9';tmux select-pane -t 3"
 
 ulimit -c unlimited

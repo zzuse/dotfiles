@@ -6,6 +6,9 @@ alias gl='git log --oneline'
 alias gs='git status'
 alias rmc='sudo rm core.*'
 alias rmr='sudo rm -r'
+alias vi='~/squashfs-root/usr/bin/nvim'
+alias vim='~/squashfs-root/usr/bin/nvim'
+alias tmux='~/squashfs-root/usr/bin/tmux'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

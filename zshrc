@@ -70,7 +70,7 @@ alias grep='grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 #color cat
 alias c='pygmentize -O style=borland -f console256 -g'
 
-export PATH=$PATH:$HOME/dotfiles-oschina/do:$HOME/opt/bin:$HOME/opt/sbin:$HOME/Library/Python/3.6/bin
+export PATH=$HOME/dotfiles-oschina/do:$HOME/opt/bin:$HOME/opt/sbin:$HOME/Library/Python/3.6/bin:$PATH
 
 # find shorthand
 function f () {

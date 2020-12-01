@@ -28,6 +28,16 @@ case `uname` in
     --enable-luainterp --enable-perlinterp
     make -j8;make install
     vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
+    wget https://github.com/tmux/tmux/releases/download/3.1b/tmux-3.1b-x86_64.AppImage
+    chmod +x tmux-3.1b-x86_64.AppImage
+    tmux-3.1b-x86_64.AppImage --appimage-extract
+    mv squashfs-root/usr/bin/tmux ~/opt/bin/.
+    wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
+    chmod +x nvim.appimage
+    ./nvim.appimage --appimage-extract
+    mv squashfs-root/usr/bin/nvim ~/opt/bin/.
+    ln -s ~/.vim ~/.config/nvim
+    ln -s ~/.vimrc ~/.config/nvim/init.vim
   ;;
 esac
 echo "installing oh-my-zsh.git ..."

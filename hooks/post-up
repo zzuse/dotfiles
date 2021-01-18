@@ -37,6 +37,7 @@ case `uname` in
     chmod +x nvim.appimage
     ./nvim.appimage --appimage-extract
     mv squashfs-root/usr/bin/nvim ~/opt/bin/.
+    mv squashfs-root/usr/share/nvim ~/.vim/
     ln -s ~/.vim ~/.config/nvim
     ln -s ~/.vimrc ~/.config/nvim/init.vim
     ln -s ~/opt/bin/nvim ~/opt/bin/vim

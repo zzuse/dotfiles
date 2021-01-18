@@ -6,7 +6,11 @@ alias gl='git log --oneline'
 alias gs='git status'
 alias rmc='sudo rm core.*'
 alias rmr='sudo rm -r'
-export VIMRUNTIME='~/.vim/nvim/runtime'
+
+IS_NVIM=$(vim --version |head -n 1 | awk -F" " '{print $1}')
+if [[ $IS_NVIM =~ "NVIM" ]]; then
+    export VIMRUNTIME='~/.vim/nvim/runtime'
+fi
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

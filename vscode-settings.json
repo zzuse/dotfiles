@@ -1,5 +1,4 @@
 {
-    "window.zoomLevel": 1,
     "clang-format.executable": "/usr/local/bin/clang-format",
     "editor.formatOnSave": true,
     "workbench.statusBar.visible": true,
@@ -9,9 +8,9 @@
         "**/*.wk": true,
         "**/*.log": true,
         "**/*.o": true,
-        ".git": true,
         ".cache": true
     },
+    "git.enabled": true,
     "search.exclude": {
         "**/node_modules": true,
         "**/bower_components": true,
@@ -20,6 +19,7 @@
         "library/": true,
         "**/*.anim": true
     },
+    "workbench.editor.enablePreview": false,
     "files.autoGuessEncoding": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "java.configuration.checkProjectSettingsExclusions": false,
@@ -40,7 +40,8 @@
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
-        "**/node_modules/*/**": true
+        "**/node_modules/*/**": true,
+        "**/out*/**": true
     },
     "workbench.colorTheme": "Shades of Purple",
     "workbench.colorCustomizations": {
@@ -89,5 +90,90 @@
     "workbench.startupEditor": "welcomePage",
     "tabnine.experimentalAutoImports": true,
     "git.ignoreLegacyWarning": true,
-    "python.languageServer": "Microsoft"
+    "python.languageServer": "Pylance",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "python.showStartPage": false,
+    "extensions.ignoreRecommendations": true,
+    "editor.accessibilitySupport": "off",
+    "gitlens.advanced.messages": {
+        "suppressGitDisabledWarning": true,
+        "suppressGitVersionWarning": true
+    },
+    "leek-fund.funds": [],
+    "leek-fund.stocks": [
+        "sz002714",
+        "sh601995",
+        "sh603678",
+        "sh603228",
+        "sh603259",
+        "sh000001",
+        "sh600460",
+        "sh600737",
+        "sz002626",
+        "sz002823",
+        "sh600036",
+        "sh603127",
+        "usr_ixic",
+        "usr_dji",
+        "usr_inx",
+        "sh600900",
+        "sz002585",
+        "sz002192",
+        "hk02269",
+        "hk03759",
+        "hk01797",
+        "hk02331",
+        "sh601633",
+        "sh600309",
+        "hk00700",
+        "sh516550",
+        "hk01810",
+        "sz002438",
+        "sz002183",
+        "sz000807",
+        "sh601238",
+        "sh600809",
+        "sh601965",
+        "sh603466",
+        "sz002601",
+        "hk03968",
+        "sh516070",
+        "sz000776",
+        "sz002555",
+        "sz002415",
+        "sz002236",
+        "sz002041",
+        "sz000725",
+        "sh603444",
+        "sz000977",
+        "sz002624",
+        "sh600085",
+        "sh600771",
+        "sh603363",
+        "sh601619",
+        "sh601012",
+        "sz002762",
+        "sh600048",
+        "sz002870",
+        "sh600150"
+    ],
+    "leek-fund.statusBarStock": [
+        "sh000001"
+    ],
+    "leek-fund.stockSort": 1,
+    "leek-fund.showEarnings": 0,
+    "leek-fund.stockRemindSwitch": 1,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "leek-fund.fundSort": 2,
+    "rust-analyzer.cargo.allFeatures": true,
+    "rust-analyzer.trace.extension": true,
+    "window.zoomLevel": -1,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.renderWhitespace": "all",
+    "breadcrumbs.enabled": false
 }

@@ -105,12 +105,12 @@ function ms () {
 if [ -f "${HOME}/.zshrc-`uname`" ]; then
     source "${HOME}/.zshrc-`uname`"
 fi
-if [ -f "${HOME}/.zshrc-Brain" ]; then
-    source "${HOME}/.zshrc-Brain"
-fi
-if [ -f "${HOME}/.zshrc-VM" ]; then
-    source "${HOME}/.zshrc-VM"
-fi
+#if [ -f "${HOME}/.zshrc-Brain" ]; then
+#    source "${HOME}/.zshrc-Brain"
+#fi
+#if [ -f "${HOME}/.zshrc-VM" ]; then
+#    source "${HOME}/.zshrc-VM"
+#fi
 
 #FOR echo
 if [ -t 1 ]; then
@@ -160,11 +160,6 @@ printf "%s%sctrl+shift+option+left send topleft in phoenix%s\n" $RB_INDIGO ${BOL
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -180,4 +175,7 @@ printf "%s%sctrl+shift+option+left send topleft in phoenix%s\n" $RB_INDIGO ${BOL
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

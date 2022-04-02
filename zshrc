@@ -53,7 +53,7 @@ ZSH_THEME="half-life"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby vi-mode last-working-dir zsh-autosuggestions themes zsh-syntax-highlighting)
+plugins=(git ruby vi-mode last-working-dir zsh-autosuggestions themes zsh-syntax-highlighting auto-notify)
 
 if [ -f ~/.bash_profile ]; then
     source ~/.bash_profile
@@ -81,6 +81,10 @@ function f () {
 function ms () {
     nc -ul 2224
 }
+
+export AUTO_NOTIFY_THRESHOLD=30
+export AUTO_NOTIFY_TITLE="Hey! %command has just finished"
+export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
 
 # function rm(){  # 定义rm函数
 #         timestamp=`date +%s`; # 定义时间戳垃圾袋

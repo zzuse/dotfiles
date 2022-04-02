@@ -22,7 +22,7 @@ Installation
     
 ### Install rcm on OSX:
 
-    brew tap thoughtbot/formulae
+    (deprecated) brew tap thoughtbot/formulae
     brew install rcm
     
 

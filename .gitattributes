@@ -1,1 +1,1 @@
-func/notify-send filter=${{secrets.DINGBOTTOKEN}}
+func/notify-send filter=DINGBOTTOKEN

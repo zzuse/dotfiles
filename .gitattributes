@@ -1,1 +1,1 @@
-func/notify-send filter=DINGBOTTOKEN
+*send text eol=lf filter=cleanPass

@@ -83,23 +83,7 @@ function ms () {
 }
 
 #notify-send "$title" "$body" --app-name=zsh "--urgency=$urgency" "--expire-time=$AUTO_NOTIFY_EXPIRE_TIME"
-
-function notify-send () {
-    curl  https://oapi.dingtalk.com/robot/send\?access_token\=${{ secrets.DINGBOTTOKEN }} -H 'Content-Type: application/json' \
--d "
-{
-     "msgtype": "markdown",
-     "markdown": {"title":"$1",
-"text":"####  $*\n\n "
-     },
-    "at": {
-        "atMobiles": [
-            "00000000"
-        ],
-        "isAtAll": false
-    }
- }"
-}
+source ~/dotfiles/func/notify-send
 
 export AUTO_NOTIFY_THRESHOLD=30
 export AUTO_NOTIFY_TITLE="Hey! %command has just finished"

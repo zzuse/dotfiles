@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+function notify-send () {
+    notify="curl https://oapi.dingtalk.com/robot/send\?access_token\=f2c1ff0f05fc9c9f60607f634126facbf0526236d8632086f80439e9aacc916b -H 'Content-Type: application/json'"
+    header="-d ' { \"msgtype\": \"markdown\", \"markdown\": {\"title\":\"job notify\", \"text\":\"####  $1 \n\n $2 \n\n \" }, \"at\": { \"atMobiles\": [ \"00000000\" ], \"isAtAll\": false } }' "
+    eval "$notify $header"
+}

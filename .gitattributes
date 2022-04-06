@@ -1,0 +1,1 @@
+func/notify-send filter=${{secrets.DINGBOTTOKEN}}

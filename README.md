@@ -141,6 +141,6 @@ Backup Apps On OSX
 
     brew bundle dump
 
-License
+LICENSE
 ----------
-BSD
+MIT

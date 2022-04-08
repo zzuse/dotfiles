@@ -6,18 +6,17 @@
 *   (deprecated) brew install mackup https://github.com/lra/mackup, now more used in Linux. on Mac, you need install software by your own needs  
 *   Just run `export RCRC="$HOME/dotfiles/rcrc";rcup`, all is set!  
     It will first link all configurations as dotfiles at home dir  
-Then run hooks/post-up,which is a bunch of installation  
+Then automaticlly run hooks/post-up, which is a bunch of installation post scripts. 
 
 Installation
 ------------
 ## for run `rcup`, you need `rcm` package first:
 
-### Install on a fresh clean OSX system:
+### Preinstall on a fresh clean OSX system:
 
-    The automation script is to install on an fresh clean OSX, but some part(exclude brew command ...) also suit for Linux/Unix
-    First you need install Xcode
-    Then run ##bootstrap.sh##, it will install brew, rcm, mackup, vim and zsh etc.
-    Or maybe you will install it manually as follow steps.
+    The automation script is to install on an fresh clean OSX. 
+    First you need install Xcode, brew.   
+    Second you will install it as follow steps.  
     RCM is a dotfiles management system
     
 ### Install rcm on OSX:
@@ -54,7 +53,7 @@ Installation
     make && \
     make install
     
-## For more about rcm install, plz consult https://github.com/thoughtbot/rcm
+## For more about rcm install, plz consult https://github.com/thoughtbot/rcm. 
     
 Setup
 ------------

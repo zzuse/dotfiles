@@ -2,8 +2,10 @@
 -----------
 # REF
 *   inspired by https://github.com/thoughtbot/dotfiles  
-*   git clone https://github.com/zzuse/dotfiles.git  
 *   (deprecated) brew install mackup https://github.com/lra/mackup, now more used in Linux. on Mac, you need install software by your own needs  
+
+# HOW TO COOK
+*   git clone https://github.com/zzuse/dotfiles.git  
 *   Just run `export RCRC="$HOME/dotfiles/rcrc";rcup`, all is set!  
     It will first link all configurations as dotfiles at home dir  
 Then automaticlly run hooks/post-up, which is a bunch of installation post scripts. 

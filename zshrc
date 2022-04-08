@@ -53,6 +53,8 @@ ZSH_THEME="half-life"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+source ~/dotfiles/func/notify-send
 plugins=(git ruby vi-mode last-working-dir zsh-autosuggestions themes zsh-syntax-highlighting auto-notify)
 
 if [ -f ~/.bash_profile ]; then
@@ -81,9 +83,6 @@ function f () {
 function ms () {
     nc -ul 2224
 }
-
-#notify-send "$title" "$body" --app-name=zsh "--urgency=$urgency" "--expire-time=$AUTO_NOTIFY_EXPIRE_TIME"
-source ~/dotfiles/func/notify-send
 
 export AUTO_NOTIFY_THRESHOLD=30
 export AUTO_NOTIFY_TITLE="Hey! %command has just finished"

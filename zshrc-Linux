@@ -15,6 +15,7 @@ alias t="cd /mnt/data/$USER/"
 alias dus='du --max-depth=1 -h|sort -n'
 alias tm='~/dotfiles/tmux/tm'
 alias tmm="tmux new-window 'cmatrix -u 9';tmux split-window -h -p 80 'cmatrix -u 9';tmux split-window -h -p 20 'cmatrix -u 9';tmux select-pane -t 2;tmux split-window -v -p 80;tmux split-window -v -p 20 'cmatrix -u 9';tmux select-pane -t 3"
+alias tmm="tmux new-window; tmux split-window -h 'watch -n 1 nvidia-smi'; tmux select-pane -t 1; tmux split-window -v; tmux split-window -v; tmux select-pane -t 1; tmux split-window -v"
 
 ulimit -c unlimited
 export GOROOT=$HOME/go

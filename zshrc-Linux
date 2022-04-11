@@ -9,8 +9,8 @@ export HISTFILESIZE=10000
 export TIMEOUT=0
 export TMOUT=0
 
-alias vi="$HOME/opt/bin/vim"
-alias vim='vi'
+#alias vi="$HOME/opt/bin/vim"
+#alias vim='vi'
 alias t="cd /mnt/data/$USER/"
 alias dus='du --max-depth=1 -h|sort -n'
 alias tm='~/dotfiles/tmux/tm'

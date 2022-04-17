@@ -1,17 +1,19 @@
 
 #FOR expect
-export PATH="/opt/local/bin:/opt/local/sbin:/Users/zz/.do:$PATH"
-#FOR instantclient_11_2
-export DYLD_LIBRARY_PATH="/Users/zz/Documents/Software/instantclient_11_2;/usr/local/lib"
-export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"
-export ORACLE_HOME="/Users/zz/Documents/Software/instantclient_12_1"
+export PATH="/opt/local/bin:/opt/local/sbin:$HOME/.do:$PATH"
+#FOR oracle instantclient
+#export DYLD_LIBRARY_PATH="$HOME/Documents/Software/instantclient_11_2;/usr/local/lib"
+#export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"
+#export ORACLE_HOME="$HOME/Documents/Software/instantclient_12_1"
 #FOR dummy cscope
-export CSCOPE_DB='/local/zhangzhen/cscope/$CSVIEW/cscope.out'
+export CSCOPE_DB="/usr/local/$USER/cscope/$CSVIEW/cscope.out"
 #FOR terminal
 export CLICOLOR=1
 export LSCOLORS='gxfxcxdxbxegedabagacad'
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="30;45" 
+#FOR code path
+export CODE_PATH="$HOME/Documents/Code/Self:$HOME/Documents/Code/Company"
 #FOR Golang
 export GOPATH=$HOME/Documents/Code/Self/go_workspace:$HOME/Documents/Code/Self/go_learning/
 export GOROOT=/usr/local/go
@@ -26,9 +28,36 @@ function fnew () {
     sudo rm ~/changedfiles.txt
     sudo find -x / -newer ~/timestamp >~/changedfiles.txt
 }
+# rich font theme
 function power() { 
     theme powerlevel9k/powerlevel9k
     echo -e "\033]50;SetProfile=nerdfont\a" 
+}
+# Quickly edit the source code
+function ew() {
+    script="$1"
+    dir_path=${CODE_PATH/:/ }
+    # TODO loop and slice to list
+    file_path=$(find ${dir_path##* } -type f -name "$script")
+    echo $file_path
+    if [ -z "$file_path" ]; then
+        printf "%s\n" "Error: $1 not found"
+    else
+        vim "$file_path"
+    fi
+}
+function cfp() {
+  osascript 2>/dev/null << EOF
+    tell application "Finder"
+      return POSIX path of (insertion location as alias)
+    end tell
+EOF
+}
+function cdf() {
+  cd "$(cfp)"
+}
+function o() {
+  open $1
 }
 #FOR alias
 alias cdw='cd $HOME/Documents/Code/Company/'
@@ -40,7 +69,7 @@ alias dus='du -d 2'
 alias ca='caffeinate'
 alias lo='ls -la |lolcat -a -d 3'
 alias b='bcomp'
-alias o='open .'
+
 alias po='pomodoro 60 10 --alarm=False'
 alias zip='zip -x "*/\.*" -x "\.*"'
 alias p='pomodoro 25 5  --notif=True'
@@ -48,7 +77,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
-test -e /Users/zhangzhen/.iterm2_shell_integration.zsh && source /Users/zhangzhen/.iterm2_shell_integration.zsh || true
+test -e $HOME/.iterm2_shell_integration.zsh && source $HOME/.iterm2_shell_integration.zsh || true
 
 function iterm2_print_user_vars() {
     iterm2_set_user_var badge $badge

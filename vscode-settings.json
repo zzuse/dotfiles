@@ -21,20 +21,20 @@
     },
     "workbench.editor.enablePreview": false,
     "files.autoGuessEncoding": true,
-    "diffEditor.ignoreTrimWhitespace": false,
     "java.configuration.checkProjectSettingsExclusions": false,
     "python.jediEnabled": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "C_Cpp.updateChannel": "Insiders",
     "python.linting.pylintEnabled": true,
+    "python.formatting.autopep8Args": [
+        "--ignore=E402"
+    ],
     "files.associations": {
         "*.txt": "makefile"
     },
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-    "workbench.iconTheme": "vscode-icons",
     "go.gocodeAutoBuild": true,
     "vsicons.dontShowNewVersionMessage": true,
     "files.watcherExclude": {
@@ -43,7 +43,6 @@
         "**/node_modules/*/**": true,
         "**/out*/**": true
     },
-    "workbench.colorTheme": "Shades of Purple",
     "workbench.colorCustomizations": {
         "titleBar.activeBackground": "#0bc433",
         "statusBar.background": "#0bc433",
@@ -103,8 +102,8 @@
     },
     "leek-fund.funds": [],
     "leek-fund.stocks": [
-        "sh603444",
         "sh601965",
+        "sh603444",
         "sh603259",
         "sz002714",
         "sh601995",
@@ -166,10 +165,12 @@
         "sz000776",
         "sh600008",
         "sz002460",
-        "sz002594"
+        "sz002594",
+        "sz399006"
     ],
     "leek-fund.statusBarStock": [
-        "sh000001"
+        "sh000001",
+        "sz399006"
     ],
     "leek-fund.stockSort": 1,
     "leek-fund.showEarnings": 0,

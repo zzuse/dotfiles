@@ -53,6 +53,8 @@ ZSH_THEME="half-life"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+source ~/dotfiles/func/notify-send
 plugins=(git ruby vi-mode last-working-dir zsh-autosuggestions themes zsh-syntax-highlighting auto-notify)
 
 if [ -f ~/.bash_profile ]; then
@@ -68,7 +70,7 @@ local _current_dir="%{$fg_bold[blue]%}%~%{$reset_color%} "
 
 alias grep='grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 #color cat
-alias c='pygmentize -O style=borland -f console256 -g'
+alias ccat='pygmentize -O style=borland -f console256 -g'
 
 export PATH=$HOME/dotfiles-oschina/do:$HOME/opt/bin:$HOME/opt/sbin:$HOME/Library/Python/3.6/bin:$PATH
 

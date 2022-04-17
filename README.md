@@ -2,33 +2,34 @@
 -----------
 # REF
 *   inspired by https://github.com/thoughtbot/dotfiles  
-*   git clone https://github.com/zzuse/dotfiles.git  
 *   (deprecated) brew install mackup https://github.com/lra/mackup, now more used in Linux. on Mac, you need install software by your own needs  
+
+# HOW TO COOK
+*   git clone https://github.com/zzuse/dotfiles.git  
 *   Just run `export RCRC="$HOME/dotfiles/rcrc";rcup`, all is set!  
     It will first link all configurations as dotfiles at home dir  
-Then run hooks/post-up,which is a bunch of installation  
+Then automaticlly run hooks/post-up, which is a bunch of installation post scripts. 
 
 Installation
 ------------
 ## for run `rcup`, you need `rcm` package first:
 
-### Install on a fresh clean OSX system:
+### Preinstall on a fresh clean OSX system:
 
-    The automation script is to install on an fresh clean OSX, but some part(exclude brew command ...) also suit for Linux/Unix
-    First you need install Xcode
-    Then run ##bootstrap.sh##, it will install brew, rcm, mackup, vim and zsh etc.
-    Or maybe you will install it manually as follow steps.
-    RCM is a dotfiles management system
+    RCM is a dotfiles management system. 
+    This automation script is to install on an fresh clean OSX. 
+    First you need install Xcode and brew.   
+    Then you will install as follow steps.  
     
 ### Install rcm on OSX:
 
-    (deprecated) brew tap thoughtbot/formulae
+    (deprecated, not needed now: brew tap thoughtbot/formulae)
     brew install rcm
     
 
 ### Install rcm on Ubuntu:
 
-*   in case upgrade python3.6 on ubuntu 16.04, you need:
+*   in case using python3.6 on ubuntu 16.04, you need:
     	`/usr/lib/python3/dist-packages# ln -s apt_pkg.cpython-35m-x86_64-linux-gnu.so apt_pkg.cpython-36m-x86_64-linux-gnu.so`
 *   normally:
 ```sh
@@ -44,7 +45,7 @@ Installation
     yum install rcm
 
 
-### Install rcm to an old linux machine from source,my machine have many openssl problem, so:
+### From source, Like an an old linux machine, my old machine have many openssl problem, so:
 
     wget http://curl.haxx.se/ca/cacert.pem
     curl --cacert cacert.pem  -LO https://thoughtbot.github.io/rcm/dist/rcm-1.2.3.tar.gz
@@ -54,7 +55,7 @@ Installation
     make && \
     make install
     
-## For more about rcm install, plz consult https://github.com/thoughtbot/rcm
+## For more about rcm install, please see https://github.com/thoughtbot/rcm. 
     
 Setup
 ------------
@@ -97,7 +98,7 @@ in my configuration, mkrc command will add dotfiles to dotfiles-local by default
     
 then it will symlink the .XXX to dotfiles dir as dotfiles/XXX
 
-Back up OSX APP plist or other files to iCloud (deprecated)
+Back up OSX APP plist or other files to iCloud (not use anymore, deprecated)
 ------------
 
 some none dotfiles will use mackup to backup  
@@ -140,6 +141,6 @@ Backup Apps On OSX
 
     brew bundle dump
 
-TODO
+LICENSE
 ----------
-
+MIT

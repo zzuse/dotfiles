@@ -54,9 +54,10 @@ git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 echo "PLEASE: chsh -s /bin/zsh"
 echo "To Count Lines of Code? install: npm -g install cloc"
 echo "To colorizing cat? install: pip3 install pygmentize"
+echo "To notify under linux, replace ding token"
 echo "mkdir -p .tmux/plugins/"
 mkdir -p ~/.tmux/plugins/
-echo "installing tmux plugins..."
+#echo "installing tmux plugins..."
 #cd ~/.tmux/plugins/
 #git clone https://github.com/tmux-plugins/tpm
 #git clone https://github.com/tmux-plugins/tmux-sensible

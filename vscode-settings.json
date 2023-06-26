@@ -85,7 +85,9 @@
         }
     },
     "cmake.configureOnOpen": false,
-    "[python]": {},
+    "[python]": {
+        "editor.formatOnType": true
+    },
     "workbench.startupEditor": "welcomePage",
     "tabnine.experimentalAutoImports": true,
     "git.ignoreLegacyWarning": true,
@@ -135,9 +137,9 @@
         "sh601238",
         "sh600809",
         "sh603466",
-        "sz002601",
-        "hk03968",
         "sh516070",
+        "hk03968",
+        "sz002601",
         "sz002415",
         "sz002041",
         "sz000725",
@@ -166,7 +168,8 @@
         "sh600008",
         "sz002460",
         "sz002594",
-        "sz399006"
+        "sz399006",
+        "sh516550"
     ],
     "leek-fund.statusBarStock": [
         "sh000001",

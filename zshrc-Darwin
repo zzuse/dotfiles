@@ -1,6 +1,6 @@
 
 #FOR expect
-export PATH="/opt/local/bin:/opt/local/sbin:$HOME/.do:$PATH"
+export PATH="/opt/homebrew/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin/:$HOME/.do:$PATH"
 #FOR oracle instantclient
 #export DYLD_LIBRARY_PATH="$HOME/Documents/Software/instantclient_11_2;/usr/local/lib"
 #export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"
@@ -15,7 +15,7 @@ export GREP_COLOR="30;45"
 #FOR code path
 export CODE_PATH="$HOME/Documents/Code/Self:$HOME/Documents/Code/Company"
 #FOR Golang
-export GOPATH=$HOME/Documents/Code/Self/go_workspace:$HOME/Documents/Code/Self/go_learning/
+export GOPATH=$HOME/Documents/Code/Self/go_workspace
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 

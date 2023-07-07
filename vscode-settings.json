@@ -1,5 +1,5 @@
 {
-    "clang-format.executable": "/usr/local/bin/clang-format",
+    "clang-format.executable": "/opt/homebrew/bin/clang-format",
     "editor.formatOnSave": true,
     "workbench.statusBar.visible": true,
     "workbench.sideBar.location": "left",
@@ -45,7 +45,7 @@
     },
     "workbench.colorCustomizations": {
         "titleBar.activeBackground": "#0bc433",
-        "statusBar.background": "#0bc433",
+        "statusBar.background": "#c4610b",
         "statusBar.foreground": "#101110"
     },
     "editor.tokenColorCustomizations": {
@@ -194,5 +194,6 @@
         "yaml": false,
         "plaintext": false,
         "markdown": false
-    }
+    },
+    "go.toolsManagement.autoUpdate": true
 }

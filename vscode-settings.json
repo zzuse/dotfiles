@@ -195,5 +195,9 @@
         "plaintext": false,
         "markdown": false
     },
-    "go.toolsManagement.autoUpdate": true
+    "go.toolsManagement.autoUpdate": true,
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [
+        120
+    ]
 }

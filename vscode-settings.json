@@ -195,6 +195,7 @@
         "plaintext": false,
         "markdown": false
     },
+    "editor.bracketPairColorization.enabled": true,
     "go.toolsManagement.autoUpdate": true,
     "editor.lineNumbers": "relative",
     "editor.rulers": [

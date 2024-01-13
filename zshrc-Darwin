@@ -1,6 +1,6 @@
 
 #FOR expect
-export PATH="/opt/homebrew/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin/:$HOME/.do:$PATH"
+export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/homebrew/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin/:$HOME/.do:$PATH"
 #FOR oracle instantclient
 #export DYLD_LIBRARY_PATH="$HOME/Documents/Software/instantclient_11_2;/usr/local/lib"
 #export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"

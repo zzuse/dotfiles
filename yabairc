@@ -26,3 +26,4 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^QQ" manage=off
 yabai -m rule --add app="^Beyond" manage=off
+yabai -m rule --add app="^WeChat" manage=off

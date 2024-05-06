@@ -2,17 +2,18 @@
 -----------
 # REF
 *   inspired by https://github.com/thoughtbot/dotfiles  
-*   (deprecated) brew install mackup https://github.com/lra/mackup, now more used in Linux. on Mac, you need install software by your own needs  
+*   ~(deprecated) brew install mackup https://github.com/lra/mackup, now more used in Linux. on Mac, you need install software by your own needs~  
 
 # HOW TO COOK
-*   git clone https://github.com/zzuse/dotfiles.git  
-*   Just run `export RCRC="$HOME/dotfiles/rcrc";rcup`, all is set!  
-    It will first link all configurations as dotfiles at home dir  
+*   git clone https://github.com/zzuse/dotfiles.git
+*   Install, `brew install rcm`
+*   Run `export RCRC="$HOME/dotfiles/rcrc";rcup`, all is set!  
+    It will first link all configurations from dotfiles to home dot dir  
 Then automaticlly run hooks/post-up, which is a bunch of installation post scripts. 
 
 Installation
 ------------
-## for run `rcup`, you need `rcm` package first:
+## For run `rcup`, you need `rcm` package first:
 
 ### Preinstall on a fresh clean OSX system:
 
@@ -23,8 +24,8 @@ Installation
     
 ### Install rcm on OSX:
 
-    (deprecated, not needed now: brew tap thoughtbot/formulae)
-    brew install rcm
+Deprecated: ~brew tap thoughtbot/formulae~  
+Just: brew install rcm
     
 
 ### Install rcm on Ubuntu:
@@ -76,7 +77,7 @@ You can safely run rcup multiple times to update:
 
 some sensitive data will add to private git-locations, so export RCRC other values to adapt to private git-locations
     
-Maintain dotfiles
+Maintaining dotfiles
 ------------
 
 I can edit files in dotfiles directory, after that I just need to do:

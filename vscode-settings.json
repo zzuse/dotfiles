@@ -197,5 +197,12 @@
     "editor.rulers": [
         120
     ],
-    "cmake.cmakePath": "/opt/homebrew/bin/cmake"
+    "cmake.cmakePath": "/opt/homebrew/bin/cmake",
+    "javascript.validate.enable": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "leek-fund.stockGroups": [
+        "My Stocks"
+    ]
 }

@@ -16,8 +16,9 @@ shift + alt + ctrl - j : yabai -m window --warp south
 shift + alt + ctrl - k : yabai -m window --warp north
 shift + alt + ctrl - l : yabai -m window --warp east
 
-# full screen
-alt - f : yabai -m window --toggle zoom-fullscreen
+# float / unfloat
+alt - f : yabai -m window --toggle float;\
+          yabai -m window --grid 4:4:1:1:2:2
 
 # toggle padding and gap
 alt - o : yabai -m space --toggle padding; yabai -m space --toggle gap
@@ -29,6 +30,6 @@ alt - x : yabai -m window --toggle split
 shift + alt - 0 : yabai -m space --balance
 
 # focus recent desktop
-shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
-shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
-shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+# shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+# shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+# shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3

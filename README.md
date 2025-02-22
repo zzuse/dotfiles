@@ -6,7 +6,7 @@
 
 # HOW TO COOK
 *   git clone https://github.com/zzuse/dotfiles.git
-*   Install, `brew install rcm`
+*   Install, `brew install rcm` or `sudo port install rcm`
 *   Run `export RCRC="$HOME/dotfiles/rcrc";rcup`, all is set!  
     It will first link all configurations from dotfiles to home dot dir  
 Then automaticlly run hooks/post-up, which is a bunch of installation post scripts. 

@@ -29,4 +29,6 @@ yabai -m rule --add app="^Beyond" manage=off
 yabai -m rule --add app="^WeChat" manage=off
 yabai -m rule --add app="^GTA" manage=off
 yabai -m rule --add app="^一亿小目标" manage=off
+yabai -m rule --add app="^Sleeping Dogs™ Definitive Edition" manage=off
+yabai -m rule --add app="^Tomb Raider" manage=off
 

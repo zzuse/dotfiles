@@ -7,9 +7,11 @@ fi
 case `uname` in
   Darwin)
     vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
-    xargs -n1 code --install-extension < ~/.vscode-extensions.txt
+    # xargs -n1 code --install-extension < ~/.vscode-extensions.txt
     rm ~/Library/Application\ Support/Code/User/settings.json
     ln -s ~/.vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
+    rm ~/Library/Rime/default.custom.yaml
+    ln -s ~/.default.custom.yaml ~/Library/Rime/default.custom.yaml
     echo "installing hammerspoon.git config ..."
     git clone https://github.com/zzuse/hammerspoon.git ~/.hammerspoon
     echo "PLEASE: add files to ~/Library/Dictionaries"
@@ -50,10 +52,6 @@ case `uname` in
 esac
 echo "installing oh-my-zsh.git ..."
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-echo "PLEASE: chsh -s /bin/zsh"
-echo "To Count Lines of Code? install: npm -g install cloc"
-echo "To colorizing cat? install: pip3 install pygmentize"
-echo "To notify under linux, replace ding token"
 echo "mkdir -p .tmux/plugins/"
 mkdir -p ~/.tmux/plugins/
 #echo "installing tmux plugins..."

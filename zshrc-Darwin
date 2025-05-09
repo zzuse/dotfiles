@@ -13,7 +13,7 @@ export LSCOLORS='gxfxcxdxbxegedabagacad'
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="30;45" 
 #FOR code path
-export CODE_PATH="$HOME/Documents/Code/Self:$HOME/Documents/Code/Company"
+export CODE_PATH="$HOME/Documents/Code/Self:$HOME/Documents/Code/Work"
 #FOR Golang
 export GOPATH=$HOME/Documents/Code/Self/go_workspace
 export GOROOT=/usr/local/go
@@ -60,7 +60,7 @@ function o() {
   open $1
 }
 #FOR alias
-alias cdw='cd $HOME/Documents/Code/Company/'
+alias cdw='cd $HOME/Documents/Code/Work/'
 alias cds='cd $HOME/Documents/Code/Self/'
 alias md5sum='md5 -r'
 alias grep='grep -i $GREP_OPTIONS'

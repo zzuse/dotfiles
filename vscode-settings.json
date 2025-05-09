@@ -32,7 +32,6 @@
         "editor.defaultFormatter": "xaver.clang-format"
     },
     "go.gocodeAutoBuild": true,
-    "vsicons.dontShowNewVersionMessage": true,
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,

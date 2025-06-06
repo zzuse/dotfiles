@@ -21,7 +21,7 @@
     },
     "workbench.editor.enablePreview": false,
     "files.autoGuessEncoding": true,
-    "java.configuration.checkProjectSettingsExclusions": false,
+    "java.import.generatesMetadataFilesAtProjectRoot": true,
     "python.jediEnabled": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -39,7 +39,7 @@
         "**/out*/**": true
     },
     "workbench.colorCustomizations": {
-        "titleBar.activeBackground": "#0bc433",
+        "titleBar.activeBackground": "#183d20",
         "statusBar.background": "#c4610b",
         "statusBar.foreground": "#101110"
     },
@@ -179,7 +179,6 @@
     },
     "leek-fund.fundSort": 2,
     "rust-analyzer.cargo.allFeatures": true,
-    "rust-analyzer.trace.extension": true,
     "security.workspace.trust.untrustedFiles": "open",
     "editor.renderWhitespace": "all",
     "breadcrumbs.enabled": false,
@@ -226,5 +225,13 @@
     ],
     "print.folder.maxLines": 1200,
     "print.folder.maxFiles": 30,
-    "print.folder.includeFileList": false
+    "print.folder.includeFileList": false,
+    "roo-cline.allowedCommands": [
+        "npm test",
+        "npm install",
+        "tsc",
+        "git log",
+        "git diff",
+        "git show"
+    ]
 }

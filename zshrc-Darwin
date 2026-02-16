@@ -6,7 +6,6 @@ export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/homebrew/bi
 #export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"
 #export ORACLE_HOME="$HOME/Documents/Software/instantclient_12_1"
 #FOR dummy cscope
-export CSCOPE_DB="/usr/local/$USER/cscope/$CSVIEW/cscope.out"
 #FOR terminal
 export CLICOLOR=1
 export LSCOLORS='gxfxcxdxbxegedabagacad'
@@ -15,7 +14,6 @@ export GREP_COLOR="30;45"
 #FOR code path
 export CODE_PATH="$HOME/Documents/Code/Self:$HOME/Documents/Code/Work"
 #FOR Golang
-export GOPATH=$HOME/Documents/Code/Self/go_workspace
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 

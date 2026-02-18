@@ -19,10 +19,8 @@
         "library/": true,
         "**/*.anim": true
     },
-    "workbench.editor.enablePreview": false,
     "files.autoGuessEncoding": true,
     "java.import.generatesMetadataFilesAtProjectRoot": true,
-    "python.jediEnabled": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "files.associations": {
@@ -43,54 +41,23 @@
         "statusBar.background": "#c4610b",
         "statusBar.foreground": "#101110"
     },
-    "editor.tokenColorCustomizations": {
-        "[Shades of Purple]": {
-            "textMateRules": [
-                {
-                    "scope": "storage.type.built-in.primitive.cpp",
-                    "settings": {
-                        "foreground": "#eaee0f"
-                    }
-                },
-                {
-                    "scope": "entity.name.type.parameter.cpp",
-                    "settings": {
-                        "foreground": "#00fc15"
-                    }
-                },
-                {
-                    "scope": "entity.name.function.call.cpp",
-                    "settings": {
-                        "foreground": "#ff6f00"
-                    }
-                },
-                {
-                    "scope": "meta.body.function.definition.cpp",
-                    "settings": {
-                        "foreground": "#00ff2a"
-                    }
-                },
-                {
-                    "scope": "source.cpp",
-                    "settings": {
-                        "foreground": "#70ee65"
-                    }
-                }
-            ]
-        }
-    },
+    "editor.tokenColorCustomizations": {},
     "cmake.configureOnOpen": false,
     "[python]": {
-        "editor.formatOnType": true
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        // "editor.formatOnType": true,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit",
+            "source.fixAll.ruff": "explicit"
+        }
     },
     "workbench.startupEditor": "welcomePage",
-    "tabnine.experimentalAutoImports": true,
     "git.ignoreLegacyWarning": true,
     "python.languageServer": "Pylance",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
-    "python.showStartPage": false,
     "extensions.ignoreRecommendations": true,
     "editor.accessibilitySupport": "off",
     "gitlens.advanced.messages": {
@@ -143,7 +110,6 @@
         "sh603363",
         "sh601619",
         "sh601012",
-        "sz002762",
         "sz002870",
         "sh600150",
         "sh600871",
@@ -178,17 +144,17 @@
         "jupyter-notebook": "left"
     },
     "leek-fund.fundSort": 2,
-    "rust-analyzer.cargo.allFeatures": true,
     "security.workspace.trust.untrustedFiles": "open",
     "editor.renderWhitespace": "all",
     "breadcrumbs.enabled": false,
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
-        "*": false,
+        "*": true,
         "plaintext": false,
         "markdown": false,
         "scminput": false,
-        "yaml": false
+        "yaml": false,
+        "python": true
     },
     "editor.bracketPairColorization.enabled": true,
     "go.toolsManagement.autoUpdate": true,
@@ -201,10 +167,6 @@
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-    "leek-fund.stockGroups": [
-        "My Stocks"
-    ],
-    "cmake.showOptionsMovedNotification": false,
     "javascript.format.enable": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
@@ -227,11 +189,42 @@
     "print.folder.maxFiles": 30,
     "print.folder.includeFileList": false,
     "roo-cline.allowedCommands": [
-        "npm test",
-        "npm install",
-        "tsc",
         "git log",
         "git diff",
-        "git show"
-    ]
+        "git show",
+        "npm test",
+        "npm install",
+        "tsc"
+    ],
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "leek-fund.flash-news": true,
+    "lldb.suppressUpdateNotifications": true,
+    "amazonQ.telemetry": false,
+    "makefile.configureOnOpen": true,
+    "explorer.fileNesting.patterns": {
+        "*.ts": "${capture}.js",
+        "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+        "*.jsx": "${capture}.js",
+        "*.tsx": "${capture}.ts",
+        "tsconfig.json": "tsconfig.*.json",
+        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+        "Cargo.toml": "Cargo.lock",
+        "*.sqlite": "${capture}.${extname}-*",
+        "*.db": "${capture}.${extname}-*",
+        "*.sqlite3": "${capture}.${extname}-*",
+        "*.db3": "${capture}.${extname}-*",
+        "*.sdb": "${capture}.${extname}-*",
+        "*.s3db": "${capture}.${extname}-*"
+    },
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.13",
+    "amazonQ.suppressPrompts": {
+        "codeWhispererConnectionExpired": true,
+        "amazonQChatDisclaimer": true
+    },
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "roo-cline.deniedCommands": [],
+    "geminicodeassist.project": "elemental-principle-4jcz2",
+    "chat.viewSessions.orientation": "stacked",
+    "http.systemCertificatesNode": true,
+    "geminicodeassist.displayInlineContextHint": false
 }

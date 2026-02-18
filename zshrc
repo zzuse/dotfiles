@@ -29,7 +29,7 @@ alias grep='grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 #color cat
 alias ccat='pygmentize -O style=borland -f console256 -g'
 
-export PATH=$HOME/dotfiles-oschina/do:$HOME/opt/bin:$HOME/opt/sbin:$HOME/Library/Python/3.6/bin:$PATH
+export PATH=$HOME/dotfiles-oschina/do:$HOME/opt/bin:$HOME/opt/sbin:$PATH
 
 # find shorthand
 function f () {
@@ -112,3 +112,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+. "$HOME/.local/bin/env"
+

@@ -5,7 +5,6 @@ export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/homebrew/bi
 #export DYLD_LIBRARY_PATH="$HOME/Documents/Software/instantclient_11_2;/usr/local/lib"
 #export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"
 #export ORACLE_HOME="$HOME/Documents/Software/instantclient_12_1"
-#FOR dummy cscope
 #FOR terminal
 export CLICOLOR=1
 export LSCOLORS='gxfxcxdxbxegedabagacad'
@@ -13,9 +12,6 @@ export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="30;45" 
 #FOR code path
 export CODE_PATH="$HOME/Documents/Code/Self:$HOME/Documents/Code/Work"
-#FOR Golang
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
 
 #FUNCTIONS
 function finc () {
@@ -88,6 +84,22 @@ function frameworkpython {
         /usr/local/bin/python3 "$@"
     fi
 }
+
+# Golang
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+
+# Added by Windsurf
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"
+
+# Added by Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
+
+# jdk
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 trap $HOME/.logout 0
 

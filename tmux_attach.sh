@@ -1,5 +1,4 @@
 #!/bin/bash
-alias tmux='~/opt/bin/tmux'
 # abort if we're already inside a TMUX session
 [ "$TMUX" == "" ] || exit 0
 # startup a "default" session if non currently exists

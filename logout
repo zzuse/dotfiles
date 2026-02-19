@@ -4,7 +4,32 @@ echo "   \___   /\___   /|  |  \ /  ___/_/ __ \ "
 echo "    /    /  /    / |  |  / \___ \ \  ___/ "
 echo "   /_____ \/_____ \|____/ /____  > \___  >"
 echo "         \/      \/            \/      \/ "
+
+# Calculate statistics
+if [ -n "$SESSION_START_TIME" ]; then
+    NOW=$(date +%s)
+    DURATION=$((NOW - SESSION_START_TIME))
+    HOURS=$((DURATION / 3600))
+    MINS=$(((DURATION % 3600) / 60))
+    SECS=$((DURATION % 60))
+    TIME_SPENT=$(printf "%02dh %02dm %02ds" $HOURS $MINS $SECS)
+
+    # Count changed files in $HOME (top level and 1 level deep, excluding dots)
+    # Using mmin with duration in minutes. Add 1 to ensure we catch everything.
+    M_MINS=$((DURATION / 60 + 1))
+    CHANGED_FILES=$(find "$HOME" -maxdepth 2 -type f -not -path '*/.*' -mmin -$M_MINS 2>/dev/null | wc -l | xargs)
+else
+    TIME_SPENT="Unknown"
+    CHANGED_FILES="Unknown"
+fi
+
 echo "*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*"
 echo "*     Game over, Have a good rest,Bye~~       *"
-echo "*     The time is:"`date "+%Y/%m/%d %H:%M:%S"`"         *"
+echo "*     The time is: "`date "+%Y/%m/%d %H:%M:%S"`"        *"
+echo "*     Time spent:    $TIME_SPENT               *"
+echo "*     Files changed: $CHANGED_FILES                        *"
 echo "*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*"
+
+# Log to history for later review
+echo "$(date "+%Y/%m/%d %H:%M:%S") | Duration: $TIME_SPENT | Files Changed: $CHANGED_FILES" >> "$HOME/.logout_history"
+sleep 2

@@ -1,5 +1,7 @@
 # Unix
 alias l="ls -lahrt"
+alias vim="nvim"
+alias vi="nvim"
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

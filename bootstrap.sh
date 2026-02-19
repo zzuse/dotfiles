@@ -47,6 +47,7 @@ binaries=(
     tmux
     cmake
     clang-format
+    neovim
 )
 
 apps=(
@@ -81,9 +82,9 @@ if command -v rcup >/dev/null 2>&1; then
     export RCRC="$HOME/dotfiles/rcrc"
     rcup -f
     
-    if [ -d "$HOME/dotfiles-oschina" ]; then
-        echo "Installing dotfiles-oschina..."
-        export RCRC="$HOME/dotfiles-oschina/rcrc"
+    if [ -d "$HOME/dotfiles-os" ]; then
+        echo "Installing dotfiles-os..."
+        export RCRC="$HOME/dotfiles-os/rcrc"
         rcup -f
     fi
 else

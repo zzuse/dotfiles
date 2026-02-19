@@ -4,12 +4,17 @@ if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
   curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+~/dotfiles/install_tmux.sh
+vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
+rm -rf ~/.config/nvim
+git clone https://github.com/zzuse/nvim_config.git ~/.config/nvim
 case `uname` in
   Darwin)
-    vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
     # xargs -n1 code --install-extension < ~/.vscode-extensions.txt
+    echo "link VSCode settings..."
     rm ~/Library/Application\ Support/Code/User/settings.json
     ln -s ~/.vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
+    echo "link Rime settings..."
     rm ~/Library/Rime/default.custom.yaml
     ln -s ~/.default.custom.yaml ~/Library/Rime/default.custom.yaml
     echo "installing hammerspoon.git config ..."
@@ -19,35 +24,6 @@ case `uname` in
   ;;
   Linux)
     rm ~/.zshrc-Brain ~/.zshrc-Darwin ~/.zshrc-VM ~/.tmux-Darwin.conf ~/.bashrc
-    mkdir -p ~/opt/bin
-    ## compile vim from source (deprecated)
-    #git clone https://github.com/vim/vim.git ~/vim
-    #cd ~/vim
-    #./configure --prefix=/home/$USER/opt/ \
-    #--with-features=huge \
-    #--enable-multibyte \
-    #--enable-rubyinterp \
-    #--enable-pythoninterp \
-    #--enable-python3interp=yes \
-    #--with-python3-config-dir=/usr/lib64/python3.6/config-3.6m-x86_64-linux-gnu \
-    #--enable-luainterp --enable-perlinterp
-    #make -j8;make install
-    ## install tmux from appimage binary (deprecated)
-    #wget https://github.com/tmux/tmux/releases/download/3.1b/tmux-3.1b-x86_64.AppImage
-    #chmod +x tmux-3.1b-x86_64.AppImage
-    #./tmux-3.1b-x86_64.AppImage --appimage-extract
-    #mv squashfs-root/usr/bin/tmux ~/opt/bin/.
-    vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
-    ## install nvim from appimage binary (deprecated)
-    #wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
-    #chmod +x nvim.appimage
-    #./nvim.appimage --appimage-extract
-    #mv squashfs-root/usr/bin/nvim ~/opt/bin/.
-    #mv squashfs-root/usr/share/nvim ~/.vim/
-    ## for nvim config and clean up
-    git clone https://github.com/zzuse/nvim_config.git ~/.config/nvim
-    #ln -s ~/opt/bin/nvim ~/opt/bin/vim
-    #rm -rf squashfs-root nvim.appimage tmux-3.1b-x86_64.AppImage
   ;;
 esac
 echo "installing oh-my-zsh.git ..."
@@ -65,3 +41,5 @@ echo "installing zsh-syntax-highlighting ..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 echo "installing zsh-auto-notify..."
 git clone https://github.com/MichaelAquilina/zsh-auto-notify.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/auto-notify
+echo "installing p10k..."
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k

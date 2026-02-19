@@ -72,6 +72,7 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
 test -e $HOME/.iterm2_shell_integration.zsh && source $HOME/.iterm2_shell_integration.zsh || true
+source ~/.aliases
 
 function iterm2_print_user_vars() {
     iterm2_set_user_var badge $badge
@@ -86,7 +87,7 @@ function frameworkpython {
 }
 
 # Golang
-export GOROOT=/usr/local/go
+export GOROOT="$(brew --prefix go)/libexec"
 export PATH=$PATH:$GOROOT/bin
 
 # Added by Windsurf

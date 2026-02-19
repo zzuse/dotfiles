@@ -67,9 +67,6 @@ alias b='bcomp'
 alias po='pomodoro 60 10 --alarm=False'
 alias zip='zip -x "*/\.*" -x "\.*"'
 alias p='pomodoro 25 5  --notif=True'
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='nerdfont-complete'
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
 test -e $HOME/.iterm2_shell_integration.zsh && source $HOME/.iterm2_shell_integration.zsh || true
 source ~/.aliases

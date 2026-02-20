@@ -84,7 +84,11 @@ function frameworkpython {
 }
 
 # Golang
-export GOROOT="$(brew --prefix go)/libexec"
+if [ -d "/opt/local/lib/go" ]; then
+    export GOROOT="/opt/local/lib/go"
+else
+    export GOROOT="$(brew --prefix go)/libexec"
+fi
 export PATH=$PATH:$GOROOT/bin
 
 # Added by Windsurf

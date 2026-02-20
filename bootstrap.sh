@@ -47,6 +47,7 @@ binaries=(
     tmux
     cmake
     clang-format
+    go
     neovim
 )
 

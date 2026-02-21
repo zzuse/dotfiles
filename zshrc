@@ -15,8 +15,6 @@ export SESSION_START_TIME=$(date +%s)
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="random"
 #ZSH_THEME="half-life"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -53,14 +51,6 @@ function ms () {
 export AUTO_NOTIFY_THRESHOLD=30
 export AUTO_NOTIFY_TITLE="Hey! %command has just finished"
 export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
-
-# function rm(){  # 定义rm函数
-#         timestamp=`date +%s`; # 定义时间戳垃圾袋
-#         [ -d ~/rmbackup ] || mkdir -p ~/rmbackup; # 创建垃圾桶
-#         mkdir ~/rmbackup/$timestamp; # 创建垃圾袋
-#         /bin/mv -f $@ ~/rmbackup/$timestamp; #将垃圾移动到垃圾袋
-# }
-# export rm
 
 if [ -f "${HOME}/.zshrc-`uname`" ]; then
     source "${HOME}/.zshrc-`uname`"
@@ -112,16 +102,12 @@ printf "%s   /_____ \%s/_____ \%s|____/ %s/____  >%s \___  >%s\n" $RB_RED $RB_OR
 printf "%s         \/%s      \/%s       %s     \/ %s     \/ %s\n" $RB_RED $RB_ORANGE $RB_YELLOW $RB_GREEN $RB_BLUE $RB_RESET
 printf "%s*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*%s\n" $RB_VIOLET ${BOLD} $RB_RESET
 printf "%s%sctrl+shift+Q send exit in iTerm2%s\n" $RB_INDIGO ${BOLD} $RB_RESET
-printf "%s%sctrl+shift+option+left send topleft in phoenix%s\n" $RB_INDIGO ${BOLD} $RB_RESET
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 . "$HOME/.local/bin/env"
 

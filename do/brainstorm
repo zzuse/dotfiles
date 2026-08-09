@@ -1,0 +1,82 @@
+#!/usr/bin/env zsh
+#
+# brainstorm — one-command launcher: SSH into your dev host, land in the repo,
+#              see the git state, and drop straight into Claude Code with your idea.
+#
+# Usage:
+#   brainstorm "add dark mode to the settings page"     # default repo
+#   brainstorm api "rate-limit the /search endpoint"    # pick a repo by alias
+#   brainstorm api                                      # no idea yet — just open Claude there
+#   brainstorm --list                                   # show configured repos
+#
+# Install:
+#   Edit the CONFIG section below (your SSH host + repo paths), then run rcup.
+#   This lives in ~/dotfiles/do/, which rcm links to ~/.do — already on $PATH
+#   via zshrc-Darwin.
+#
+emulate -L zsh
+set -euo pipefail
+
+# ─── CONFIG ──────────────────────────────────────────────────────────────────
+# Your SSH host (anything that works with plain `ssh <host>`; use an alias
+# from ~/.ssh/config if you have one).
+SSH_HOST="10.0.0.30"
+
+# Repo aliases → absolute paths on the remote host.
+typeset -A REPOS=(
+  main    "/home/zzuse/code/safefamily"
+  esp     "/home/zzuse/code/esphome-config"
+  adguard "/home/zzuse/code/adguard_home_rule"
+)
+DEFAULT_REPO="main"
+# ─────────────────────────────────────────────────────────────────────────────
+
+if [[ "${1:-}" == "--list" || "${1:-}" == "-l" ]]; then
+  echo "Host: $SSH_HOST"
+  echo "Repos:"
+  for name in ${(ko)REPOS}; do
+    marker=""
+    if [[ "$name" == "$DEFAULT_REPO" ]]; then
+      marker="  (default)"
+    fi
+    printf "  %-10s %s%s\n" "$name" "${REPOS[$name]}" "$marker"
+  done
+  exit 0
+fi
+
+# Figure out which args are the repo alias vs. the idea text.
+repo_alias="$DEFAULT_REPO"
+idea=""
+if (( $# >= 1 )); then
+  if (( ${+REPOS[$1]} )); then
+    repo_alias="$1"
+    shift
+  fi
+  idea="$*"
+fi
+
+repo_path="${REPOS[$repo_alias]}"
+
+# Safely quote the idea so it survives the trip through ssh → remote bash.
+idea_q=""
+if [[ -n "$idea" ]]; then
+  idea_q="${(q)idea}"
+fi
+
+# Remote script: show git state, then hand the terminal to Claude Code.
+remote_cmd=$(cat <<EOF
+cd "$repo_path" || { echo "Repo not found: $repo_path"; exit 1; }
+echo "── \$(basename "$repo_path") ── \$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo 'not a git repo') ──"
+git fetch --quiet 2>/dev/null || true
+git status -sb
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo
+  echo "⚠ Uncommitted changes:"
+  git diff --stat HEAD | tail -n 20
+fi
+echo "────────────────────────────────────────"
+exec claude $idea_q
+EOF
+)
+
+exec ssh -t "$SSH_HOST" "$remote_cmd"

@@ -27,7 +27,7 @@
         "*.txt": "makefile"
     },
     "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format"
+        "editor.defaultFormatter": "ms-vscode.cpptools"
     },
     "go.gocodeAutoBuild": true,
     "files.watcherExclude": {
@@ -55,6 +55,15 @@
     "workbench.startupEditor": "welcomePage",
     "git.ignoreLegacyWarning": true,
     "python.languageServer": "Pylance",
+    "python.analysis.extraPaths": [
+        "./src",
+        "/opt/ros/jazzy/lib/python3.12/site-packages",
+        "/home/zzuse/ros2_jazzy/install/rclpy/lib/python3.12/site-packages",
+        "/home/zzuse/ros2_jazzy/install/tf2_ros_py/lib/python3.12/site-packages",
+        "/home/zzuse/.local/lib/python3.12/site-packages",
+        "install/chapt4_interfaces/lib/python3.12/site-packages",
+        "/usr/lib/python3/dist-packages/"
+    ],
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
@@ -226,5 +235,39 @@
     "geminicodeassist.project": "elemental-principle-4jcz2",
     "chat.viewSessions.orientation": "stacked",
     "http.systemCertificatesNode": true,
-    "geminicodeassist.displayInlineContextHint": false
+    "geminicodeassist.displayInlineContextHint": false,
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.fontLigatures.enabled": true,
+    "terminal.integrated.copyOnSelection": true,
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "leek-fund.holdingsLedger": {
+        "schemaVersion": 1,
+        "updatedAt": "2026-06-07T15:48:51.534Z",
+        "revision": 0,
+        "defaultAccountId": "00000000-0000-4000-8000-000000000001",
+        "accounts": [
+            {
+                "id": "00000000-0000-4000-8000-000000000001",
+                "name": "默认",
+                "sort": 0,
+                "updatedAt": "2026-06-07T15:48:51.531Z",
+                "positions": []
+            }
+        ],
+        "migratedFrom": "fundAmount-v1+stockPrice-v1"
+    },
+    "leek-fund.fundAmount": {},
+    "leek-fund.stockPrice": {},
+    "leek-fund.holdingsLedgerMigrated": true,
+    "claudeCode.preferredLocation": "panel",
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    },
+    "claudeNotifier.remoteAudio.enabled": true,
+    "claudeNotifier.soundVolume": 2,
+    "terminal.integrated.enableVisualBell": true,
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4o-mini"
 }

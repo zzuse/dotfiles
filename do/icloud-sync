@@ -1,0 +1,128 @@
+#!/usr/bin/osascript
+--
+-- icloud-sync — open System Settings on the "Apps syncing to iCloud Drive" pane.
+-- Needs Accessibility permission for whatever process invokes it.
+
+-- Part 1: Your original logic to open the iCloud pane
+-- even though it opens the window with and error.
+tell application "System Settings" to activate
+delay 2.0
+tell application "System Settings" to reveal anchor "iCloud" of pane id "com.apple.systempreferences.AppleIDSettings*AppleIDSettings"
+delay 2.0
+
+-- Part 2: UI Scripting to navigate to the "Apps Syncing" screen
+set timeoutSeconds to 2.0
+set uiScript to "click UI Element 2 of group 2 of scroll area 1 of group 1 of group 2 of splitter group 1 of group 1 of window \"iCloud\" of application process \"System Settings\""
+my doWithTimeout2(uiScript, timeoutSeconds)
+
+on doWithTimeout2(uiScript, timeoutSeconds)
+	set endDate to (current date) + timeoutSeconds
+	repeat
+		try
+			run script "tell application \"System Events\"
+" & uiScript & "
+end tell"
+			exit repeat
+		on error errorMessage
+			if ((current date) > endDate) then
+				error "Can not " & uiScript
+			end if
+		end try
+	end repeat
+end doWithTimeout2
+
+-- Click the “<fill in title>” button.
+delay 2.0
+set timeoutSeconds to 2.0
+set uiScript to "click UI Element 3 of group 1 of scroll area 1 of group 1 of sheet 1 of window \"iCloud\" of application process \"System Settings\""
+my doWithTimeout3(uiScript, timeoutSeconds)
+
+on doWithTimeout3(uiScript, timeoutSeconds)
+	set endDate to (current date) + timeoutSeconds
+	repeat
+		try
+			run script "tell application \"System Events\"
+" & uiScript & "
+end tell"
+			exit repeat
+		on error errorMessage
+			if ((current date) > endDate) then
+				error "Can not " & uiScript
+			end if
+		end try
+	end repeat
+end doWithTimeout3
+
+-- Click the “<fill in title>” button.
+delay 2.0
+set timeoutSeconds to 2.0
+set uiScript to "click UI Element 1 of group 4 of scroll area 1 of group 1 of sheet 1 of window \"iCloud\" of application process \"System Settings\""
+my doWithTimeout4(uiScript, timeoutSeconds)
+
+on doWithTimeout4(uiScript, timeoutSeconds)
+	set endDate to (current date) + timeoutSeconds
+	repeat
+		try
+			run script "tell application \"System Events\"
+" & uiScript & "
+end tell"
+			exit repeat
+		on error errorMessage
+			if ((current date) > endDate) then
+				error "Can not " & uiScript
+			end if
+		end try
+	end repeat
+end doWithTimeout4
+
+-- Click the “<fill in title>” checkbox.
+delay 2.0
+set timeoutSeconds to 2.0
+set uiScript to "click checkbox 10 of group 1 of scroll area 1 of group 1 of sheet 1 of window \"iCloud\" of application process \"System Settings\""
+my doWithTimeout5(uiScript, timeoutSeconds)
+
+on doWithTimeout5(uiScript, timeoutSeconds)
+	set endDate to (current date) + timeoutSeconds
+	repeat
+		try
+			run script "tell application \"System Events\"
+" & uiScript & "
+end tell"
+			exit repeat
+		on error errorMessage
+			if ((current date) > endDate) then
+				error "Can not " & uiScript
+			end if
+		end try
+	end repeat
+end doWithTimeout5
+
+tell application "System Events"
+	tell process "System Settings"
+		-- 1. Wait for and click the "iCloud Drive" row
+		set icloudDriveButton to missing value
+		repeat 20 times -- Timeout after ~4 seconds
+			try
+				set icloudDriveButton to (first UI element of group 1 of scroll area 1 of group 1 of group 2 of splitter group 1 of group 1 of window 1 whose name contains "iCloud Drive")
+				if exists icloudDriveButton then
+					click icloudDriveButton
+					exit repeat
+				end if
+			end try
+			delay 0.2
+		end repeat
+		
+		-- 2. Wait for and click the "Apps syncing to iCloud Drive" button
+		set appsButton to missing value
+		repeat 20 times
+			try
+				set appsButton to (first UI element of group 1 of scroll area 1 of group 1 of group 2 of splitter group 1 of group 1 of window 1 whose name contains "Apps syncing")
+				if exists appsButton then
+					click appsButton
+					exit repeat
+				end if
+			end try
+			delay 0.2
+		end repeat
+	end tell
+end tell

@@ -23,7 +23,10 @@ case `uname` in
     rm ~/.zshrc-Brain ~/.zshrc-VM ~/.bashrc
   ;;
   Linux)
-    rm ~/.zshrc-Brain ~/.zshrc-Darwin ~/.zshrc-VM ~/.tmux-Darwin.conf ~/.bashrc
+    rm ~/.zshrc-Brain ~/.zshrc-Darwin ~/.zshrc-VM ~/.tmux-Darwin.conf
+    mkdir -p ~/opt/bin
+    sudo apt install zsh
+    chsh -s "$(which zsh)"
   ;;
 esac
 echo "installing oh-my-zsh.git ..."

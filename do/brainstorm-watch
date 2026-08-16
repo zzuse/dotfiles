@@ -1,0 +1,184 @@
+#!/usr/bin/env bash
+#
+# brainstorm-watch — the "away from terminal" half of brainstorm.
+#
+# Runs on your dev host (10.0.0.30). Polls your GitHub repos for open issues
+# labeled `brainstorm`, and for each one:
+#   1. creates a fresh git worktree + branch from the default branch
+#      (your in-progress working tree is never touched)
+#   2. runs Claude Code headless with the issue title+body as the feature request
+#   3. commits, pushes the branch, opens a PR that closes the issue
+#   4. comments on the issue with the result, relabels it brainstorm-done
+#
+# From your phone: open the GitHub app → the repo → New issue →
+#   title = your idea, body = details (optional) → add label `brainstorm`.
+# A few minutes later a PR shows up for you to review, right from the app.
+#
+# Requirements on this host:
+#   - claude  (Claude Code CLI, logged in)         claude --version
+#   - gh      (GitHub CLI, authed with repo scope) gh auth status
+#   - git remotes over HTTPS or SSH with push access
+#
+# Install:
+#   1. Edit CONFIG below.
+#   2. chmod +x brainstorm-watch, put it on the host (e.g. ~/bin or your dotfiles).
+#   3. Run once by hand:  brainstorm-watch --setup   (creates the labels)
+#   4. Add a cron entry (crontab -e):
+#        */5 * * * * $HOME/bin/brainstorm-watch >> $HOME/.brainstorm/cron.log 2>&1
+#      or use the systemd timer from the install notes.
+#
+set -uo pipefail
+
+# ─── CONFIG ──────────────────────────────────────────────────────────────────
+# GitHub repo → local clone path on this host.
+declare -A REPOS=(
+  ["zzuse/safefamily"]="/home/zzuse/code/safefamily"
+  ["zzuse/esphome-config"]="/home/zzuse/code/esphome-config"
+  ["zzuse/adguard_home_rule"]="/home/zzuse/code/adguard_home_rule"
+)
+
+LABEL="brainstorm"                 # you add this from your phone
+LABEL_WORKING="brainstorm-working" # watcher sets while Claude is running
+LABEL_DONE="brainstorm-done"       # success: PR opened
+LABEL_FAILED="brainstorm-failed"   # something went wrong; see issue comment
+
+# How much Claude may do without asking. `acceptEdits` lets it read/write
+# files freely but not run arbitrary shell commands. If your ideas routinely
+# need builds/tests to run, switch to:
+#   CLAUDE_FLAGS=(--dangerously-skip-permissions)
+# (reasonable on a trusted LAN host, but understand what it means).
+CLAUDE_FLAGS=(--permission-mode acceptEdits)
+
+CLAUDE_TIMEOUT_MIN=30              # kill a runaway session after this long
+STATE_DIR="$HOME/.brainstorm"
+# ─────────────────────────────────────────────────────────────────────────────
+
+LOG_DIR="$STATE_DIR/logs"
+WT_DIR="$STATE_DIR/worktrees"
+mkdir -p "$LOG_DIR" "$WT_DIR"
+
+log() { printf '%s %s\n' "$(date '+%F %T')" "$*"; }
+
+# ── one-time setup: create labels in every repo ─────────────────────────────
+if [[ "${1:-}" == "--setup" ]]; then
+  for gh_repo in "${!REPOS[@]}"; do
+    for lbl in "$LABEL:0E8A16:Idea for Claude to implement" \
+               "$LABEL_WORKING:FBCA04:Claude is working on this" \
+               "$LABEL_DONE:1D76DB:Implemented, PR opened" \
+               "$LABEL_FAILED:D93F0B:Automation failed, see comments"; do
+      IFS=: read -r name color desc <<<"$lbl"
+      gh label create "$name" -R "$gh_repo" --color "$color" \
+        --description "$desc" --force >/dev/null 2>&1 \
+        && log "label '$name' ready in $gh_repo" \
+        || log "WARN could not create label '$name' in $gh_repo"
+    done
+  done
+  log "setup done. Add the cron entry and you're live."
+  exit 0
+fi
+
+# ── single-instance lock so overlapping cron runs don't collide ─────────────
+exec 9>"$STATE_DIR/lock"
+flock -n 9 || exit 0
+
+process_issue() {
+  local gh_repo="$1" repo_path="$2" num="$3"
+  local slug branch wt logfile title body default_branch
+  slug="${gh_repo##*/}"
+  branch="brainstorm/issue-$num"
+  wt="$WT_DIR/$slug-$num"
+  logfile="$LOG_DIR/$slug-$num.log"
+
+  title=$(gh issue view "$num" -R "$gh_repo" --json title -q .title)
+  body=$(gh issue view "$num" -R "$gh_repo" --json body -q .body)
+  log "[$gh_repo #$num] picking up: $title"
+
+  gh issue edit "$num" -R "$gh_repo" \
+    --add-label "$LABEL_WORKING" --remove-label "$LABEL" >/dev/null
+
+  default_branch=$(gh repo view "$gh_repo" \
+    --json defaultBranchRef -q .defaultBranchRef.name)
+
+  # Fresh worktree from latest default branch; never touches your checkout.
+  git -C "$repo_path" fetch origin --quiet
+  git -C "$repo_path" worktree remove --force "$wt" >/dev/null 2>&1 || true
+  if ! git -C "$repo_path" worktree add -B "$branch" "$wt" \
+        "origin/$default_branch" >/dev/null 2>&1; then
+    fail "$gh_repo" "$num" "could not create worktree/branch $branch"
+    return
+  fi
+
+  local prompt
+  prompt=$(cat <<EOF
+You are working on a fresh branch of this repository, created for GitHub issue #$num.
+
+Feature request — "$title":
+
+$body
+
+Implement this end-to-end: make the code changes, follow the conventions in CLAUDE.md if present, and keep the change focused on the request. Do not commit or push; that is handled outside this session. Finish with a short summary of what you changed and anything the reviewer should double-check.
+EOF
+)
+
+  ( cd "$wt" && timeout "${CLAUDE_TIMEOUT_MIN}m" \
+      claude -p "$prompt" "${CLAUDE_FLAGS[@]}" ) >"$logfile" 2>&1
+  local rc=$?
+
+  if ! git -C "$wt" status --porcelain | grep -q .; then
+    fail "$gh_repo" "$num" \
+      "Claude made no file changes (exit $rc). Last output:
+\`\`\`
+$(tail -c 1500 "$logfile")
+\`\`\`"
+    git -C "$repo_path" worktree remove --force "$wt" >/dev/null 2>&1 || true
+    return
+  fi
+
+  git -C "$wt" add -A
+  git -C "$wt" commit -q -m "$title" \
+    -m "Implemented by Claude Code from issue #$num (brainstorm-watch)."
+  if ! git -C "$wt" push -q -u origin "$branch"; then
+    fail "$gh_repo" "$num" "implementation committed locally on '$branch' but push failed"
+    return
+  fi
+
+  local summary pr_url
+  summary=$(tail -c 2500 "$logfile")
+  pr_url=$(gh pr create -R "$gh_repo" --head "$branch" --base "$default_branch" \
+    --title "Brainstorm: $title" \
+    --body "Closes #$num
+
+Automated implementation by Claude Code via brainstorm-watch.
+
+### Claude's summary
+\`\`\`
+$summary
+\`\`\`" 2>>"$logfile") || true
+
+  gh issue comment "$num" -R "$gh_repo" --body \
+    "✅ Implemented on branch \`$branch\`.${pr_url:+ PR: $pr_url}" >/dev/null
+  gh issue edit "$num" -R "$gh_repo" \
+    --add-label "$LABEL_DONE" --remove-label "$LABEL_WORKING" >/dev/null
+
+  git -C "$repo_path" worktree remove --force "$wt" >/dev/null 2>&1 || true
+  log "[$gh_repo #$num] done → ${pr_url:-branch $branch}"
+}
+
+fail() {
+  local gh_repo="$1" num="$2" msg="$3"
+  log "[$gh_repo #$num] FAILED: ${msg%%$'\n'*}"
+  gh issue comment "$num" -R "$gh_repo" --body "⚠️ brainstorm-watch: $msg" >/dev/null
+  gh issue edit "$num" -R "$gh_repo" \
+    --add-label "$LABEL_FAILED" --remove-label "$LABEL_WORKING" >/dev/null
+}
+
+# ── main loop ───────────────────────────────────────────────────────────────
+for gh_repo in "${!REPOS[@]}"; do
+  repo_path="${REPOS[$gh_repo]}"
+  [[ -d "$repo_path/.git" ]] || { log "skip $gh_repo: no repo at $repo_path"; continue; }
+
+  while IFS= read -r num; do
+    [[ -n "$num" ]] && process_issue "$gh_repo" "$repo_path" "$num"
+  done < <(gh issue list -R "$gh_repo" --label "$LABEL" --state open \
+             --json number -q '.[].number' 2>/dev/null)
+done

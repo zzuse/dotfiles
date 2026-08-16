@@ -267,7 +267,5 @@
     },
     "claudeNotifier.remoteAudio.enabled": true,
     "claudeNotifier.soundVolume": 2,
-    "terminal.integrated.enableVisualBell": true,
-    "gitlens.ai.model": "vscode",
-    "gitlens.ai.vscode.model": "copilot:gpt-4o-mini"
+    "terminal.integrated.enableVisualBell": true
 }

@@ -59,20 +59,107 @@ mkdir -p "$LOG_DIR" "$WT_DIR"
 
 log() { printf '%s %s\n' "$(date '+%F %T')" "$*"; }
 
-# ── one-time setup: create labels in every repo ─────────────────────────────
-if [[ "${1:-}" == "--setup" ]]; then
+# ── preflight: check every assumption and say exactly what's wrong ──────────
+if [[ "${1:-}" == "--doctor" || "${1:-}" == "--setup" ]]; then
+  problems=0
+
+  for tool in gh claude git flock; do
+    if command -v "$tool" >/dev/null 2>&1; then
+      log "ok   $tool: $(command -v "$tool")"
+    else
+      log "FAIL $tool not found in PATH"
+      problems=$((problems+1))
+    fi
+  done
+
+  # gh >= 2.4 is needed for `gh label create`; older builds have no label cmd.
+  if command -v gh >/dev/null 2>&1; then
+    gh_ver=$(gh --version 2>/dev/null | head -1)
+    log "ok   $gh_ver"
+    if ! gh label --help >/dev/null 2>&1; then
+      log "FAIL this gh is too old for 'gh label' — upgrade (apt/brew) to >= 2.4"
+      problems=$((problems+1))
+    fi
+    if auth_out=$(gh auth status 2>&1); then
+      log "ok   gh authenticated: $(grep -o 'account [^ ]*' <<<"$auth_out" | head -1)"
+      if ! grep -q "'repo'" <<<"$auth_out"; then
+        log "WARN token scopes may lack 'repo' — run: gh auth refresh -s repo"
+      fi
+    else
+      log "FAIL gh not authenticated. Run: gh auth login"
+      log "     $auth_out"
+      problems=$((problems+1))
+    fi
+  fi
+
+  for gh_repo in "${!REPOS[@]}"; do
+    repo_path="${REPOS[$gh_repo]}"
+
+    if [[ -d "$repo_path/.git" ]]; then
+      log "ok   clone exists: $repo_path"
+      remote=$(git -C "$repo_path" remote get-url origin 2>/dev/null || echo "")
+      # Derive owner/name from the remote so a config typo is obvious.
+      actual="${remote%.git}"          # strip trailing .git
+      actual="${actual#*github.com[:/]}" # strip scheme/host, keep owner/name
+      if [[ -n "$remote" && "$actual" != "$gh_repo" ]]; then
+        log "FAIL config says '$gh_repo' but origin points at '$actual'"
+        log "     ($remote) — fix the REPOS entry to match"
+        problems=$((problems+1))
+      fi
+    else
+      log "FAIL no git clone at $repo_path"
+      problems=$((problems+1))
+    fi
+
+    if ! view_out=$(gh repo view "$gh_repo" --json name,hasIssuesEnabled,viewerPermission 2>&1); then
+      log "FAIL cannot reach repo '$gh_repo':"
+      log "     $view_out"
+      problems=$((problems+1))
+      continue
+    fi
+    if ! grep -q '"hasIssuesEnabled":true' <<<"$view_out"; then
+      log "FAIL issues are disabled on $gh_repo — enable them in repo Settings"
+      problems=$((problems+1))
+    fi
+    perm=$(sed -E 's/.*"viewerPermission":"([^"]*)".*/\1/' <<<"$view_out")
+    case "$perm" in
+      ADMIN|MAINTAIN|WRITE) log "ok   $gh_repo reachable (permission: $perm)" ;;
+      *) log "FAIL your account has '$perm' on $gh_repo — need WRITE to push/label"
+         problems=$((problems+1)) ;;
+    esac
+  done
+
+  if [[ "${1:-}" == "--doctor" ]]; then
+    log "doctor finished with $problems problem(s)."
+    exit $(( problems > 0 ? 1 : 0 ))
+  fi
+
+  if (( problems > 0 )); then
+    log "refusing to create labels: fix the $problems problem(s) above first."
+    exit 1
+  fi
+
+  # ── create the labels, surfacing gh's real error on failure ───────────────
   for gh_repo in "${!REPOS[@]}"; do
     for lbl in "$LABEL:0E8A16:Idea for Claude to implement" \
                "$LABEL_WORKING:FBCA04:Claude is working on this" \
                "$LABEL_DONE:1D76DB:Implemented, PR opened" \
                "$LABEL_FAILED:D93F0B:Automation failed, see comments"; do
       IFS=: read -r name color desc <<<"$lbl"
-      gh label create "$name" -R "$gh_repo" --color "$color" \
-        --description "$desc" --force >/dev/null 2>&1 \
-        && log "label '$name' ready in $gh_repo" \
-        || log "WARN could not create label '$name' in $gh_repo"
+      if err=$(gh label create "$name" -R "$gh_repo" --color "$color" \
+                 --description "$desc" --force 2>&1); then
+        log "ok   label '$name' ready in $gh_repo"
+      else
+        log "FAIL label '$name' in $gh_repo: $err"
+        problems=$((problems+1))
+      fi
     done
   done
+
+  if (( problems > 0 )); then
+    log "setup finished with $problems problem(s) — see above."
+    exit 1
+  fi
   log "setup done. Add the cron entry and you're live."
   exit 0
 fi

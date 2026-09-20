@@ -9,8 +9,8 @@ export HISTFILESIZE=10000
 export TIMEOUT=0
 export TMOUT=0
 
-#alias vi="$HOME/opt/bin/vim"
-#alias vim='vi'
+source ~/.aliases
+
 alias t="cd /mnt/data/$USER/"
 alias dus='du --max-depth=1 -h|sort -n'
 alias tm='~/dotfiles/tmux/tm'
@@ -19,7 +19,7 @@ alias tmm="tmux new-window; tmux split-window -h 'watch -n 1 nvidia-smi'; tmux s
 
 ulimit -c unlimited
 export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOROOT/bin:$HOME/.do
 export GOPATH=$HOME/go_workspace
 
 export LC_ALL=en_US.UTF-8
@@ -31,4 +31,3 @@ function finc () {
     find . -type f |xargs -i grep -l $1 {}
 }
 
-source ~/.aliases

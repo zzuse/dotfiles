@@ -267,5 +267,6 @@
     },
     "claudeNotifier.remoteAudio.enabled": true,
     "claudeNotifier.soundVolume": 2,
-    "terminal.integrated.enableVisualBell": true
+    "terminal.integrated.enableVisualBell": true,
+    "claudeCode.hideOnboarding": true
 }

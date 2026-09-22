@@ -59,6 +59,7 @@ mkdir -p "$LOG_DIR" "$WT_DIR"
 
 log() { printf '%s %s\n' "$(date '+%F %T')" "$*"; }
 
+
 # ── preflight: check every assumption and say exactly what's wrong ──────────
 if [[ "${1:-}" == "--doctor" || "${1:-}" == "--setup" ]]; then
   problems=0
@@ -72,16 +73,20 @@ if [[ "${1:-}" == "--doctor" || "${1:-}" == "--setup" ]]; then
     fi
   done
 
-  # gh >= 2.4 is needed for `gh label create`; older builds have no label cmd.
+  # `gh label create --force` and the --json fields below need a modern gh.
   if command -v gh >/dev/null 2>&1; then
     gh_ver=$(gh --version 2>/dev/null | head -1)
-    log "ok   $gh_ver"
-    if ! gh label --help >/dev/null 2>&1; then
-      log "FAIL this gh is too old for 'gh label' — upgrade (apt/brew) to >= 2.4"
+    gh_num=$(grep -oE '[0-9]+\.[0-9]+' <<<"$gh_ver" | head -1)
+    if [[ -n "$gh_num" ]] && (( ${gh_num%%.*} < 2 || ( ${gh_num%%.*} == 2 && ${gh_num#*.} < 20 ) )); then
+      log "FAIL $gh_ver is too old — need >= 2.20 (cli.github.com apt repo)"
       problems=$((problems+1))
+    else
+      log "ok   $gh_ver"
     fi
     if auth_out=$(gh auth status 2>&1); then
-      log "ok   gh authenticated: $(grep -o 'account [^ ]*' <<<"$auth_out" | head -1)"
+      # gh >= 2.30 says "account NAME"; older gh says "as NAME (token)".
+      who=$(grep -oE '(account|as) [^ ]+' <<<"$auth_out" | head -1)
+      log "ok   gh authenticated: ${who:-unknown account}"
       if ! grep -q "'repo'" <<<"$auth_out"; then
         log "WARN token scopes may lack 'repo' — run: gh auth refresh -s repo"
       fi
@@ -111,17 +116,18 @@ if [[ "${1:-}" == "--doctor" || "${1:-}" == "--setup" ]]; then
       problems=$((problems+1))
     fi
 
-    if ! view_out=$(gh repo view "$gh_repo" --json name,hasIssuesEnabled,viewerPermission 2>&1); then
+    if ! view_out=$(gh repo view "$gh_repo" --json hasIssuesEnabled,viewerPermission \
+                      --jq '"\(.hasIssuesEnabled) \(.viewerPermission)"' 2>&1); then
       log "FAIL cannot reach repo '$gh_repo':"
       log "     $view_out"
       problems=$((problems+1))
       continue
     fi
-    if ! grep -q '"hasIssuesEnabled":true' <<<"$view_out"; then
+    read -r has_issues perm <<<"$view_out"
+    if [[ "$has_issues" != "true" ]]; then
       log "FAIL issues are disabled on $gh_repo — enable them in repo Settings"
       problems=$((problems+1))
     fi
-    perm=$(sed -E 's/.*"viewerPermission":"([^"]*)".*/\1/' <<<"$view_out")
     case "$perm" in
       ADMIN|MAINTAIN|WRITE) log "ok   $gh_repo reachable (permission: $perm)" ;;
       *) log "FAIL your account has '$perm' on $gh_repo — need WRITE to push/label"
